@@ -1,0 +1,431 @@
+- Class: meta
+  Course: Introdução ao R
+  Lesson: Variaveis no R
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+- Class: text
+  Output: |
+          Agora que estamos familiarizados com alguns comandos básicos, vamos aprender 
+          
+          a trabalhar com variáveis no R.
+          
+          Até aqui, vimos que é possível fazer operações aritméticas no R. Todavia, essas
+          
+          operações seriam praticamente inúteis se não pudéssemos armazenar seus resultados
+          
+          em uma variável. É a partir daqui que o R começa a funcionar como uma linguagem de
+          
+          programação propriamente dita.
+          
+- Class: text
+  Output: |
+          Uma variável é um espaço alocado na "memória do R" que pode armazenar valores.          
+          
+          O termo "objeto" será também utilizado no sentido de "variável" nesse curso 
+          
+          introdutório, mas existem diferenças importantes entre ambos que iremos apenas 
+          
+          ignorar por enquanto.
+          
+          (Pressione Enter para prosseguir)
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando para a soma de 5 e 3.
+          
+          (Lembre-se de Presionar "Enter" após digitar o comando!)
+  CorrectAnswer: '5 + 3'
+  AnswerTests: omnitest(correctExpr='5 + 3', correctVal=8)
+  Hint: 'Digite 5 + 3 e pressione Enter'
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          No operação acima, o R executou a expressão 5 + 3, retornando o resultado 8, mas não 
+          
+          armazenou o resultado.
+          
+          Mas ... e se quiséssemos fazer uma outra operação sobre o resultado da expressão 5 + 3,
+          
+          como faríamos?
+          
+          (Pressione Enter para prosseguir)
+
+- Class: text
+  Output: |
+          Esse é exatamente um dos (entre vários) aspectos em que variáveis são úteis.
+          
+          Se quisermos armazenar o resultado dessa operação para posterior uso, será necessário
+          
+          instruir o R explicitamente para criar uma variável contendo o resultado dessa expressão.
+          
+          O operador utilizado para criar ou sobrescrever variáveis é o operador de atribuição:
+          
+               <-     ('menor que' seguido de hífen)  
+          
+          ou  
+          
+               =       (igualdade)
+          
+          (Pressione Enter para prosseguir)
+          
+- Class: text
+  Output: |
+          Nesse curso, optaremos por sempre usar '<-' como sugerido pela Google (google.github.io/styleguide/Rguide.xml)
+          
+          Essa operação é chamada de atribuição (assignment) e portanto, chamaremos esse 
+          
+          operador (<-) de 'operador de atribuição'.
+          
+          Na expressão abaixo, por exemplo, é feita a atribuição do número 5 à variável 'minha_variavel':
+          
+          minha_variavel <- 5
+          
+          Trocando em miúdos, nós criamos uma variável na 'memória do R' e armazenanos o número 5
+          nessa variável.
+          
+          De agora em diante, podemos utilizar essa variável em outras expressões 
+          
+          (Pressione Enter para prosseguir)
+
+- Class: text
+  Output: |
+          A 'memória do R', o lugar onde ficam armazenadas as variáveis, é chamada de "workspace".
+          
+          O termo 'environment' (ambiente) é também utilizado para designar esse 'espaço' onde ficam
+          
+          armazenadas as variáveis.
+          
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Crie uma variável chamada minha_variavel (SEM ACENTO) e atribua a ela o número 5
+          
+          (Lembre-se de Pressionar "Enter" após digitar o comando!)
+          
+  CorrectAnswer: 'minha_variavel <- 5'
+  AnswerTests: omnitest(correctVal=5); expr_creates_var("minha_variavel")
+  Hint: |
+        Dica. O seu comando será algo do tipo
+          
+        ____________ <- __
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          O que aconteceu no comando anterior?
+          
+  AnswerChoices: Uma variável chamada minha_variavel foi criada na workspace do R e a essa variável foi atribuído o  valor 5;
+                 Uma workspace chamada 5 foi criada na variável do R e a ela foi atribuído o valor minha_variavel;
+                 Uma variável chamada 5 foi criada na variável do R contendo uma workspace.
+                 
+  CorrectAnswer: 'Uma variável chamada minha_variavel foi criada na workspace do R e a essa variável foi atribuído o  valor 5'
+  AnswerTests: omnitest(correctVal='Uma variável chamada minha_variavel foi criada na workspace do R e a essa variável foi atribuído o  valor 5')
+  Hint: ''
+
+
+- Class: cmd_question
+  Output: |
+          
+          No comando acima, você criou uma nova variável na workspace.
+          
+          Para ver as variáveis atualmente criadas na workspace, utilize a função ls()          
+        
+          EXERCÍCIO
+          
+          Utilize a função ls() para verificar as variáveis atualmente criadas na workspace.
+          
+          Apenas digite ls() no console e pressione "Enter"
+
+  CorrectAnswer: 'ls()'
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: |
+          Dica. Apenas digite ls() e pressione "Enter"
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          O resultado indica que há uma variável chamada "minha_variavel" criada na workspace.
+          
+          EXERCÍCIO
+          
+          Crie uma nova variável chamada minha_nova_variavel (sem acento) e atribua a ela o
+          
+          numero 8
+
+  CorrectAnswer: 'minha_nova_variavel <- 8'
+  AnswerTests: omnitest(correctVal=8); expr_creates_var("minha_nova_variavel")
+  Hint: |
+        Dica. O seu comando será algo do tipo
+          
+        ____________ <- __
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Após a criação de minha_nova_variavel, o que aconteceu com a variavel minha_variavel 
+          
+          criada no exercício anterior?
+          
+  AnswerChoices: minha_variavel não foi afetada porque a criação de uma variável não afeta outras previamente existentes;
+                 minha_variavel foi sobrescrita por minha_nova_variavel;
+                 minha_variavel passou a armazernar o número 8
+                 
+  CorrectAnswer: 'minha_variavel não foi afetada porque a criação de uma variável não afeta outras previamente existentes'
+  AnswerTests: omnitest(correctVal='minha_variavel não foi afetada porque a criação de uma variável não afeta outras previamente existentes')
+  Hint: 'Operar sobre uma variável não afeta as outras variáveis.'
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora que criamos outra variável. Verifique quais variáveis estão atualmente disponíveis
+          
+          no workspace.
+          
+
+  CorrectAnswer: 'ls()'
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: |
+        Dica. Utilize a função ls() como fizemos anteriormente.
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          Observe que a criação/modificação de uma variável não retorna nenhum valor no console.
+          
+          Para acessar o dado armazenado em uma variável, é necessário digitar seu nome no console
+          
+          e pressionar Enter.
+  
+          EXERCÍCIO
+          
+          Verifique o valor contido na variável minha_variavel.
+          
+          Para isso, apenas execute o comando
+          
+          minha_variavel
+          
+  CorrectAnswer: 'minha_variavel'
+  AnswerTests: omnitest(correctExpr="minha_variavel")
+  Hint: |
+        Apenas digite minha_variavel no console e pressione "Enter"
+
+- Class: text
+  Output: ...
+
+- Class: mult_question
+  Output: |
+          O exemplo acima ilustra um importante princípio na linguagem R
+          
+          Uma letra ou palavra não envolvida por aspas será sempre interpretada
+          
+          como uma variável (o nome de um objeto, mais precisamente).
+  
+          EXERCÍCIO
+          
+          O que acontecerá se você executar o comando abaixo?
+          
+          minha_variavel
+          
+  AnswerChoices: O R ficará confuso;O R buscará uma variável chamada minha_variavel na workspace e apresentará seu conteúdo no console.; O R interpretará o comando como apenas uma sequência de letras formando uma palavra.
+  CorrectAnswer: 'O R buscará uma variável chamada minha_variavel na workspace e apresentará seu conteúdo no console.'
+  AnswerTests: omnitest(correctVal='O R buscará uma variável chamada minha_variavel na workspace e apresentará seu conteúdo no console.')
+  Hint: ''
+
+- Class: mult_question
+  Output: |
+  
+          EXERCÍCIO
+          
+          E se você executar esse comando? O que acontecerá?
+          
+          MINHA_VARIAVEL
+          
+  AnswerChoices: O R irá buscar MINHA_VARIAVEL na workspace, não encontrará porque ela não foi criada ainda, e retornará uma mensagem de erro.;O R buscará uma variável chamada minha_variavel na workspace e apresentará seu conteúdo no console.; O R interpretará o comando como apenas uma sequência de letras formando uma palavra.
+  CorrectAnswer: 'O R irá buscar MINHA_VARIAVEL na workspace, não encontrará porque ela não foi criada ainda, e retornará uma mensagem de erro.'
+  AnswerTests: omnitest(correctVal='O R irá buscar MINHA_VARIAVEL na workspace, não encontrará porque ela não foi criada ainda, e retornará uma mensagem de erro.')
+  Hint: ''
+
+- Class: cmd_question
+  Output: |
+          Para remover uma variável, utilizamos a função rm
+          
+          Se quiséssemos excluir a variável minha_nova_variavel, utilizaríamos a seguinte expressão
+          
+          rm(minha_nova_variavel)
+          
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          rm(minha_nova_variavel)
+          
+          para remover minha_nova_variavel. 
+          
+
+  CorrectAnswer: |
+                 rm(minha_nova_variavel)
+                
+  AnswerTests: omnitest(correctExpr='rm(minha_nova_variavel)')
+  Hint: |
+        rm(minha_nova_variavel)
+
+- Class: cmd_question
+  Output: |
+          
+          EXERCÍCIO
+          
+          Quais variáveis estão agora disponíveis na workspace?
+          
+          Utilize a função ls() para descobrir. Atente para o efeito do comando rm()
+
+  CorrectAnswer: 'ls()'
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: |
+        Dica. Utilize a função ls() como fizemos anteriormente.
+        
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          Chegamos quase ao fim dessa lição!
+          
+          Uma última dica com relação à exclusão de variáveis é o comando abaixo, 
+          
+          que exclui todas as variáveis disponíveis na workspace
+          
+          rm(list = ls())
+          
+          Daqui em diante, não vou mais lhe avisar para apertar Enter para prosseguir.
+          
+          Sempre que você ver as reticências (...) abaixo, isso significa que você
+          
+          deve apertar Enter ;-)
+          
+          Vamos revisar o que vimos até aqui?
+           
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Como se chama o operador abaixo e qual a sua função
+          
+          <-
+          
+  AnswerChoices: operador de atribuição, criar/modificar variáveis;
+                 operador de atribuição, excluir variáveis;
+                 operador de translação, excluir variáveis;
+                 seta à esquerda, sinalizar conversão à direita;
+                 nenhuma das alternativas
+                 
+  CorrectAnswer: 'operador de atribuição, criar/modificar variáveis'
+  AnswerTests: omnitest(correctVal='operador de atribuição, criar/modificar variáveis')
+  Hint: ''
+
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Como se chama o lugar em que ficam armazenadas as variáveis criadas no R?
+          
+  AnswerChoices: workspace; 
+                 vetor; 
+                 área de trabalho; 
+                 armário de variáveis
+                 
+  CorrectAnswer: 'workspace'
+  AnswerTests: omnitest(correctVal='workspace')
+  Hint: ''
+
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Qual das funções abaixo mostra as variáveis existentes na workspace?
+          
+  AnswerChoices: ls();
+                 rm();
+                 <-; 
+                 nenhuma das alternativas
+                 
+  CorrectAnswer: 'ls()'
+  AnswerTests: omnitest(correctVal='ls()')
+  Hint: ''
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Se a variável 'minha_variavel' já tiver sido previamente criada e a ela tenha sido previamente
+          
+          atribuído o número 10, o que acontecerá após o comando abaixo
+          
+          minha_variavel <- 2
+          
+  AnswerChoices: minha_variavel continuará com seu valor original, 10;
+                 O R irá executar uma mensagem de erro e parar imediatamente;
+                 minha_variavel será sobrescrita e passará a ter o valor 2; 
+                 nenhuma das alternativas
+                 
+  CorrectAnswer: 'minha_variavel será sobrescrita e passará a ter o valor 2'
+  AnswerTests: omnitest(correctVal='minha_variavel será sobrescrita e passará a ter o valor 2')
+  Hint: ''
+
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Qual dos comandos abaixo exclui permanentemente a variável minha_variavel?
+          
+  AnswerChoices: rm minha_variavel;
+                 rm(Minha_Variavel);
+                 RM(minha_variavel);
+                 rm(minha_variável);
+                 rm(minha_variavel)
+                 
+  CorrectAnswer: 'rm(minha_variavel)'
+  AnswerTests: omnitest(correctVal='rm(minha_variavel)')
+  Hint: 'Cuidado com a sintaxe. Maiúsculas e minúsculas fazem toda a diferença.'
+
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Para finalizar, o que você achou dessa lição?
+          
+  AnswerChoices: Perdi meu tempo!;Maravilhosa! Ganhei o dia!
+                 
+  CorrectAnswer: 'Maravilhosa! Ganhei o dia!'
+  AnswerTests: omnitest(correctVal='Maravilhosa! Ganhei o dia!')
+  Hint: 'Seja sincero(a)!'
+
+
+
+
+
+
+
+
+

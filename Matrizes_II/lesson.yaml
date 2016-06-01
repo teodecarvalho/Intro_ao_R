@@ -1,0 +1,510 @@
+- Class: meta
+  Course: Intro ao R
+  Lesson: Matrizes_II
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+- Class: cmd_question
+  Output: |
+          Os vetores idades, pesos e alturas foram novamente disponibilizados
+          
+          nessa lição.
+          
+          EXERCÍCIO
+          
+          Crie uma matriz chamada 'minha_matriz' com os vetores
+          
+          idades, pesos e alturas (nessa ordem) usando a função cbind.
+          
+  CorrectAnswer: 'minha_matriz <- cbind(idades, pesos, alturas)'
+  AnswerTests: omnitest(correctExpr='minha_matriz <- cbind(idades, pesos, alturas)')
+  Hint: |
+        minha_matriz <- cbind(_____, _____, ____)
+
+- Class: cmd_question
+  Output: |
+          
+          EXERCÍCIO
+          
+          Verifique o objeto que você acabou de criar digitando o 
+          
+          seu nome no console.
+          
+  CorrectAnswer: 'minha_matriz'
+  AnswerTests: omnitest(correctExpr='minha_matriz')
+  Hint: |
+        minha_matriz
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          Na lição de vetores vimos que um dos atributos que
+          
+          o vetor pode assumir é o nome dos elementos, acessado
+          
+          pela função "names".
+          
+          No caso das matrizes, um atributo equivalente é o nome
+          
+          das colunas, acessado pela função colnames, e o nome 
+          
+          das linhas, acessado pela função rownames.
+          
+          EXERCÍCIO
+          
+          Verifique quais são os nomes das colunas da matriz 
+          
+          minha_matriz usando o comando abaixo:
+          
+          colnames(minha_matriz)
+          
+  CorrectAnswer: 'colnames(minha_matriz)'
+  AnswerTests: omnitest(correctExpr='colnames(minha_matriz)')
+  Hint: |
+        colnames(minha_matriz)
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          
+          EXERCÍCIO
+          
+          Agora verifique o nome das linhas usando rownames.
+          
+  CorrectAnswer: 'rownames(minha_matriz)'
+  AnswerTests: omnitest(correctExpr='rownames(minha_matriz)')
+  Hint: |
+        rownames(minha_matriz)
+
+- Class: text
+  Output: ...
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Nos exercícios acima, as funções rownames e colnames retornaram
+          
+          seus respectivos resultados em um objeto que foi apresentado
+          
+          no console. Qual é a classe do objeto retornado por essas
+          
+          duas funções?
+          
+  AnswerChoices: Vector no modo character;
+                 Matrix no modo character;
+                 Function;
+                 Vector no modo numérico;
+                 
+  CorrectAnswer: 'Vector no modo character'
+  AnswerTests: omnitest(correctVal='Vector no modo character')
+  Hint: ''  
+
+- Class: text
+  Output: |
+          Como mostrado na questão anterior, as expressões
+          
+          colnames(minha_matriz) e rownames(minha_matriz)
+          
+          ambas retornam um objeto da classe vector no modo
+          
+          character. Isso significa que podemos operar sobre
+          
+          essas expressões como se estivéssemos trabalhando
+          
+          com um vetor qualquer.
+  
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando abaixo para selecionar o segundo
+          
+          elemento do nome das linhas de minha_matriz ou, 
+          
+          equivalentemente, o nome da segunda linha de minha_matriz:
+          
+          rownames(minha_matriz)[2]
+          
+  CorrectAnswer: 'rownames(minha_matriz)[2]'
+  AnswerTests: omnitest(correctExpr='rownames(minha_matriz)[2]')
+  Hint: |
+        rownames(minha_matriz)[2]
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          O fato de conseguirmos selecionar especificamente o 
+          
+          nome da segunda linha de minha_matriz indica que 
+          
+          podemos também alterar especificamente esse elemento
+          
+          usando uma operação de atribuição.
+  
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando para alterar o nome da segunda linha
+          
+          de Francisco para Chico.
+          
+          rownames(minha_matriz)[2] <- "Chico"
+          
+  CorrectAnswer: 'rownames(minha_matriz)[2] <- "Chico"'
+  AnswerTests: omnitest(correctExpr='rownames(minha_matriz)[2] <- "Chico"')
+  Hint: |
+        rownames(minha_matriz)[2] <- "Chico"
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora verifique novamente a matriz minha_matriz
+          
+          para ver o resultado de sua alteração.
+          
+  CorrectAnswer: 'minha_matriz'
+  AnswerTests: omnitest(correctExpr='minha_matriz')
+  Hint: |
+        minha_matriz
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Usando o mesmo princípio ilustrado no exemplo anterior,
+          
+          altere o nome da segunda coluna de pesos para massa.
+          
+  CorrectAnswer: 'colnames(minha_matriz)[2] <- "massa"'
+  AnswerTests: omnitest(correctExpr='colnames(minha_matriz)[2] <- "massa"')
+  Hint: |
+        _________(minha_matriz)[__] <- "massa"
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora verifique novamente a matriz minha_matriz
+          
+          para ver o resultado de sua alteração.
+          
+  CorrectAnswer: 'minha_matriz'
+  AnswerTests: omnitest(correctExpr='minha_matriz')
+  Hint: |
+        minha_matriz
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          Operação de indexação de matrizes
+          
+          Nas lições de vetores, aprendemos que a seleção de elementos
+          
+          de um vetor é feita através do operador de indexação "[]"
+          
+          conforme a estrutura abaixo:
+          
+          nome_do_vetor[índice]
+          
+          Em que o índice pode ser numeric, character ou logical.
+
+- Class: text
+  Output: |
+          Em matrizes, a seleção de elementos é feita com uma estrutura
+          
+          similar, usando também o operador de indexação, mas com uma 
+          
+          importante diferença: para indicar a posição de um elemento em
+          
+          uma matriz são necessárias duas informações, a linha e a coluna.
+          
+          Desse modo, a estrutura do comando de seleção de elementos em
+          
+          uma matriz é:
+          
+          nome_da_matriz[linha, coluna]
+          
+          Observe que o índice da linha é a primeira informação a ser 
+          
+          fornecida dentro do operador de indexação, seguido pelo índice
+          
+          da coluna, ambos separados por vírgula.
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique mais uma vez a matriz minha_matriz.
+          
+  CorrectAnswer: 'minha_matriz'
+  AnswerTests: omnitest(correctExpr='minha_matriz')
+  Hint: |
+        minha_matriz
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          Nessa matriz, o elemento correspondente à idade do
+          
+          Chico ocupa a segunda linha e a primeira coluna.
+          
+          EXERCÍCIO
+          
+          Utilizando indexação por POSIÇÃO, selecione a idade 
+          
+          do Chico na matriz minha_matriz completando o comando
+          
+          abaixo (substitua as linhas):
+          
+          minha_matriz[2, __]
+          
+  CorrectAnswer: 'minha_matriz[2, 1]'
+  AnswerTests: omnitest(correctExpr='minha_matriz[2, 1]')
+  Hint: |
+        idades é primeira coluna de minha_matriz
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          O resultado acima poderia ser obtido por indexação por CHARACTER.
+          
+          EXERCÍCIO
+          
+          Execute o comando abaixo para selecionar a idade do Chico
+          
+          minha_matriz["Chico", "idades"]
+          
+  CorrectAnswer: 'minha_matriz["Chico", "idades"]'
+  AnswerTests: omnitest(correctExpr='minha_matriz["Chico", "idades"]')
+  Hint: |
+        minha_matriz["Chico", "idades"]
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora, também utilizando indexação por CHARACTER,
+          
+          selecione a altura do Manoel.
+          
+  CorrectAnswer: 'minha_matriz["Manoel", "alturas"]'
+  AnswerTests: omnitest(correctExpr='minha_matriz["Manoel", "alturas"]')
+  Hint: |
+        Utilize indexação por CHARACTER. Não esqueça das aspas.
+
+- Class: text
+  Output: ...
+
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          No comando anterior, se ao invés de
+          
+          minha_matriz["Manoel", "alturas"]
+          
+          você executar o comando
+          
+          minha_matriz["alturas", "Manoel"]
+          
+          qual será a consequência?
+          
+  AnswerChoices: O R procurará por uma linha chamada "alturas" e por uma coluna chamada "Manoel", ambas inexistentes;
+                 O resultado será o mesmo para ambos os comandos uma vez que os elementos correspondentes existem;
+                 
+  CorrectAnswer: 'O R procurará por uma linha chamada "alturas" e por uma coluna chamada "Manoel", ambas inexistentes'
+  AnswerTests: omnitest(correctVal='O R procurará por uma linha chamada "alturas" e por uma coluna chamada "Manoel", ambas inexistentes')
+  Hint: ''          
+
+- Class: cmd_question
+  Output: |
+          Para selecionar uma linha inteira, basta informar o índice
+          
+          para a linha e deixar o índice para a coluna em branco.
+  
+          EXERCÍCIO
+          
+          Selecione as informações do Pedro usando o comando abaixo:
+          
+          minha_matriz["Pedro", ]
+          
+  CorrectAnswer: 'minha_matriz["Pedro", ]'
+  AnswerTests: omnitest(correctExpr='minha_matriz["Pedro", ]')
+  Hint: |
+        minha_matriz["Pedro", ]
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          Para selecionar uma coluna inteira, basta informar o índice
+          
+          para a coluna e deixar o índice para a linha em branco.
+  
+          EXERCÍCIO
+          
+          Selecione todas as idades com o comando abaixo:
+          
+          minha_matriz[, "idades"]
+          
+  CorrectAnswer: 'minha_matriz[, "idades"]'
+  AnswerTests: omnitest(correctExpr='minha_matriz[, "idades"]')
+  Hint: |
+        minha_matriz[, "idades"]
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Utilizando o mesmo princípio, selecione todas as 
+          
+          alturas.
+          
+  CorrectAnswer: 'minha_matriz[, "alturas"]'
+  AnswerTests: omnitest(correctExpr=' minha_matriz[, "alturas"]')
+  Hint: |
+        minha_matriz[, "alturas"]
+
+- Class: text
+  Output: ...
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Considerando que alturas é a terceira coluna da 
+          
+          matriz minha_matriz, qual será o resultado do 
+          
+          comando abaixo:
+          
+          minha_matriz[, 3]
+          
+  AnswerChoices: Idêntico ao do exercício anterior já que a indexação pode ser feita por numeric;
+                 Uma mensagem de erro porque indexação de colunas só pode ser feita por character.
+  
+  CorrectAnswer: 'Idêntico ao do exercício anterior já que a indexação pode ser feita por numeric'
+  AnswerTests: omnitest(correctVal='Idêntico ao do exercício anterior já que a indexação pode ser feita por numeric')
+  Hint: ''          
+
+- Class: text
+  Output: |
+          Alteração de Elementos em uma Matriz
+          
+          Seguindo a lógica que empregamos em lições anteriores,
+          
+          o primeiro passo para alterar elementos de um objeto
+          
+          é fazer a seleção (indexação) desse elemento, geralmente
+          
+          através do operador de indexação "[]". Em seguida, usa-se
+          
+          uma operação de atribuição para fazer a mudança permanente.
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique mais uma vez a matriz minha_matriz.
+          
+  CorrectAnswer: 'minha_matriz'
+  AnswerTests: omnitest(correctExpr='minha_matriz')
+  Hint: |
+        minha_matriz
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Suponhamos que a altura do Chico seja 190, ao invés de 180.
+          
+          Execute o comando abaixo para consertar a altura do Chico:
+          
+          minha_matriz["Chico", "alturas"] <- 190
+          
+  CorrectAnswer: 'minha_matriz["Chico", "alturas"] <- 190'
+  AnswerTests: omnitest(correctExpr='minha_matriz["Chico", "alturas"] <- 190')
+  Hint: |
+        minha_matriz["Chico", "alturas"] <- 190
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique mais uma vez a matriz minha_matriz e
+          
+          observe a modificação realizada.
+          
+  CorrectAnswer: 'minha_matriz'
+  AnswerTests: omnitest(correctExpr='minha_matriz')
+  Hint: |
+        minha_matriz
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Suponhamos agora que a idade do Pedro também esteja
+          
+          errada, sendo 21 ao invés de 19.
+          
+          Utilize o princípio demonstrado acima para corrigir
+          
+          a idade do Pedro.
+          
+          Obs.: Utilize indexação por CHARACTER.
+          
+  CorrectAnswer: 'minha_matriz["Pedro", "idades"] <- 21'
+  AnswerTests: omnitest(correctExpr='minha_matriz["Pedro", "idades"] <- 21')
+  Hint: |
+        __________[_____, _____] <- _____
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique mais uma vez a matriz minha_matriz e
+          
+          observe a modificação realizada.
+          
+  CorrectAnswer: 'minha_matriz'
+  AnswerTests: omnitest(correctExpr='minha_matriz')
+  Hint: |
+        minha_matriz
+
+- Class: text
+  Output: ...

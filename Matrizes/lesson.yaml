@@ -1,0 +1,228 @@
+- Class: meta
+  Course: Intro ao R
+  Lesson: Matrizes
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+
+- Class: text
+  Output: |
+          Nessa lição trataremos de outra classe de objeto bastante
+          
+          utilizada no R, as matrizes (matrix).
+          
+          Você não criará matrizes com frequência, mas muitas
+          
+          análises no R retornam matrizes em seus resultados, como
+          
+          a análise de componentes principais, matrizes-modelos 
+          
+          em modelos lineares (regressão, ANOVA, etc), análise de
+          
+          similaridade, entre outras. Desse modo, saber identificar
+          
+          e operar sobre matrizes é um ítem indispensável em sua 
+          
+          caixa de ferramentas no R. Além disso, as matrizes são 
+          
+          precursoras da classe "mais importante" no R, as dataframes.
+
+
+- Class: text
+  Output: |
+          Uma matriz pode ser definida como uma coleção bidimensional
+          
+          de elementos homogêneos.
+          
+          Bidimensional porque seus elementos são dispostos em linhas
+          
+          e colunas, de modo que o "endereço" de cada elemento é 
+          
+          fornecido com duas informações: o número da linha (primeiro)
+          
+          e o número da coluna (segundo).
+          
+          Homogêneos porque todos os seus elementos devem ser do mesmo
+          
+          modo.
+
+
+- Class: cmd_question
+  Output: |
+          Entre as várias maneiras de se criar matrizes, está a função 
+          
+          matrix.
+  
+          EXERCÍCIO
+          
+          Verifique a ajuda da função matrix
+          
+  CorrectAnswer: '?matrix'
+  AnswerTests: omnitest(correctExpr='?matrix')
+  Hint: |
+        Lembre-se de que para obter ajuda sobre qualquer função no R
+        
+        deve-se digitar o nome da função precedido de interrogação
+        
+        Nesse caso:
+        
+        ?matrix
+
+- Class: cmd_question
+  Output: |
+          Conforme a ajuda da função matrix, o primeiro argumento
+          
+          a ser fornecido para essa função chama-se data. Esse 
+          
+          argumento espera um vetor que contenha os dados a serem
+          
+          utilizados para criar a matriz.
+
+          EXERCÍCIO
+          
+          Execute o comando abaixo para criar uma matriz com os
+          
+          números inteiros entre 21 e 29:
+          
+          matrix(data = 21:29)
+          
+  CorrectAnswer: 'matrix(data = 21:29)'
+  AnswerTests: omnitest(correctExpr='matrix(data = 21:29)')
+  Hint: |
+        Execute o comando:
+        
+        matrix(data = 21:29)
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          Você notou alguma diferença na aparência dessa matriz
+          
+          em relação a um vetor?
+
+          EXERCÍCIO
+          
+          Execute o comando abaixo para criar um vetor de
+          
+          números inteiros entre 21 e 29:
+          
+          21:29
+          
+          Compare a aparência desse vetor com a da matriz criada
+          
+          no exercício anterior.
+          
+  CorrectAnswer: '21:29'
+  AnswerTests: omnitest(correctExpr='21:29')
+  Hint: |
+        Execute o comando:
+        
+        21:29
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Modifique o comando abaixo para criar uma matriz com
+          
+          os números inteiros de 21 a 29, mas com TRÊS colunas.
+          
+          Utilize a ajuda da função matrix para descobrir como
+          
+          fazer isso.
+          
+          matrix(data = 21:29, ___ = 3)
+          
+  CorrectAnswer: 'matrix(data = 21:29, ncol = 3)'
+  AnswerTests: omnitest(correctExpr='matrix(data = 21:29, ncol = 3)')
+  Hint: |
+        Na ajuda da função matrix há um argumento chamado ncol.
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          Uma outra maneira de criar matrizes é através da 
+          
+          concatenação de vetores de mesmo comprimento.
+          
+          Isso pode ser feito com a função cbind e pela
+          
+          função rbind. A primeira concatena os vetores
+          
+          formando uma coluna a partir de cada vetor,
+          
+          a segunda forma uma linha com cada vetor.
+          
+          Vejamos exemplos...
+
+- Class: cmd_question
+  Output: |
+          Nesta lição, os vetores pesos, idades e alturas foram
+          
+          criados conforme fizemos na lição sobre vetores.
+          
+          EXERCÍCIO
+          
+          Verifique os objetos criados na workspace agora.
+          
+  CorrectAnswer: 'ls()'
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: |
+        Utilize a função ls()
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          cbind(idades, pesos, alturas)
+          
+          para criar uma matriz com os vetores
+          
+          idades, pesos e alturas.
+          
+  CorrectAnswer: 'cbind(idades, pesos, alturas)'
+  AnswerTests: omnitest(correctExpr='cbind(idades, pesos, alturas)')
+  Hint: |
+        cbind(idades, pesos, alturas)
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Excelente! Agora execute o comando 
+          
+          rbind(idades, pesos, alturas)
+          
+          para criar uma matriz com os vetores
+          
+          idades, pesos e alturas.
+          
+          Compare o resultado com o do exercício 
+          
+          anterior.
+          
+  CorrectAnswer: 'rbind(idades, pesos, alturas)'
+  AnswerTests: omnitest(correctExpr='rbind(idades, pesos, alturas)')
+  Hint: |
+        rbind(idades, pesos, alturas)
+
+
+
+          

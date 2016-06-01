@@ -1,0 +1,443 @@
+- Class: meta
+  Course: Intro ao R
+  Lesson: Vetores I - Características e atributos
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+- Class: text
+  Output: |
+          Por tratar-se de uma linguagem de programação, para que o R possa ser utilizado
+          
+          com uma proficiência básica em análises estatísticas, é fundamental que o usuário
+          
+          compreenda a fundo as quatro estruturas de dados mais importantes no R, sendo elas
+          
+          - Vector;
+          
+          - List;
+          
+          - Matrix;
+          
+          - Dataframe.
+          
+          Essas quatro estruturas formam as quatro ** Classes de Objetos ** fundamentais do
+          
+          R, ao lado de funções, que será tratada em lições futuras.
+          
+- Class: text
+  Output: |
+          Em linguagens de programação com suporte a objetos, como é o caso do R, o conceito de
+          
+          Classes de Objetos tem um papel fundamental. Para ilustrar esse conceito, vamos utilizar
+          
+          como exemplo dois "objetos" do mundo real, o autor dessa lição, Teo, e seu gato, Lion.
+          
+          É correto dizer que
+          
+          Teo é uma **instância** da classe de objetos "Humanos"
+          
+          Lion é uma **instância** da classe de objetos "Gatos"
+          
+          Cada uma dessas classes (humanos e gatos) tem **características distintas** que dão a 
+          
+          elas **funcionalidades/comportamentos específicos**.
+
+- Class: text
+  Output: |
+          Continuando com a analogia, uma característica em comum (imutável) a todos os objetos da classe 
+          
+          "Humanos" é a capacidade de raciocínio lógico. Entre as características em comum (imutáveis) a todos 
+          
+          objetos da classe "Gatos" estão a capacidade de manter o pêlo limpo, dominar a casa e cair em
+          
+          pé quando lançado ao ar.
+              
+              
+- Class: text
+  Output: |         
+          Instâncias de uma classe geralmente possuem atributos mutáveis que podem diferenciá-las
+          
+          de outras instâncias da mesma classe. Por exemplo, a cor do cabelo, cor dos olhos, altura, 
+          
+          entre outros, são atributos/propriedades de uma instância da classe "Humanos". 
+          
+- Class: text
+  Output: |       
+          Da mesma forma, quando criamos uma variável no R, estamos na verdade criando uma instância 
+          
+          de alguma classe de objetos.
+          
+          A classe "Vector" é a principal estrutura de dados no R. Veremos em outras lições que as 
+          
+          demais classes derivam-se ou utilizam-se de vetores. As colunas de uma planilha de dados, 
+          
+          por exemplo, são vetores.
+
+- Class: text
+  Output: |   
+          Objetos da classe "Vectors" são coleções **unidimensionais** de elementos **homogêneos**.
+            
+          O termo unidimensional refere-se à disposição sequencial (enfileirada) dos elementos (valores). 
+          
+          Veja o comando abaixo:
+          
+          c("a", "b", "c", "d", "e", "f", "g")
+          
+          Obs. Ignore o c() na expressão acima por enquanto.
+          
+          Esse comando cria um vetor cujos elementos são "a", "b", "c", ..., "g". 
+          
+- Class: text
+  Output: |
+          Observe que é possível indicar precisamente a localização de qualquer elemento do vetor 
+          
+          utilizando apenas um número referente à sua posição. Por exemplo, no vetor acima,
+          
+          "b" é o elemento número 2. 
+          
+          "e" é o elemento número 5. 
+          
+          O fato de apenas um número ser suficiente para indicar de maneira inambígua a localização de qualquer
+          
+          elemento no vetor indica que esse objeto é unidimensional. Portanto, 
+          
+          Vetores são unidimensionais.
+
+- Class: text
+  Output: |         
+          Voltando à definição prévia de vetores no R,
+          
+          Objetos da classe "Vectors" são coleções **unidimensionais** de elementos **homogêneos**.
+          
+          O termo homogêneo refere-se ao modo dos elementos ("character", "numeric", "logical") do vetor. 
+          
+          Por serem homogêneos, vetores comportam apenas um tipo de elemento.
+
+          
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Nas operações abaixo, três vetores são criados
+          
+          vetor_1 <- c("a", "b", "c", "d", "e", "f", "g")
+          
+          vetor_2 <- c(1, 2, 3, 4, 5, 6, 7)
+          
+          vetor_3 <- c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE)
+          
+          Quais são os modos dos vetores vetor_1, vetor_2 e vetor_3, respectivamente?
+          
+  AnswerChoices: character, numeric, logical; 
+                 numeric, numeric, numeric; 
+                 character, numeric, character; 
+                 character, character, character;
+                 
+  CorrectAnswer: 'character, numeric, logical'
+  AnswerTests: omnitest(correctVal='character, numeric, logical')
+  Hint: ''          
+          
+- Class: text
+  Output: |
+          No exercício anterior, observe que os elementos de cada vetor são todos do mesmo tipo.
+          
+          vetor_1 <- c("a", "b", "c", "d", "e", "f", "g")
+          
+          vetor_2 <- c(1, 2, 3, 4, 5, 6, 7)
+          
+          vetor_3 <- c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE)
+          
+          Isso caracteriza os vetores como homogêneos. O termo **atômico** é utilizado na literatura
+          
+          sobre a linguagem R para indicar essa restrição dos vetores a conter apenas elementos (valores) do 
+          
+          mesmo modo.
+          
+
+- Class: text
+  Output: |
+          Coerção de modo
+          
+          Por vezes, durante a execução de um comando, elementos de modos diferentes são alocados
+          
+          para um vetor. Ao invés de retornar uma mensagem de erro e parar a execução, o R força
+          
+          ("coerce") todos os elementos para um mesmo modo de acordo com a ordem de predominância de
+          
+          modos indicada abaixo
+          
+          character > numeric > logical
+          
+          Por exemplo, a criação de um vetor com o comando abaixo (observe a presença de números e letras)
+          
+          vetor_4 <- c(1, "a", "b", "c", "d")
+          
+          resultará em um vetor do tipo character porque esse modo tem predominância sobre o modo numeric.
+          
+          Para isso, o R transformará o numeral 1 (o primeiro elemento) em um character "1", envolto por aspas.
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Crie o vetor_5 utilizando o comando abaixo
+          
+          vetor_5 <- c(1, 2, 3, 4, 5, 6, 7, "Olá")  
+          
+  CorrectAnswer: 'vetor_5 <- c(1, 2, 3, 4, 5, 6, 7, "Olá")'
+  AnswerTests: omnitest(correctExpr='vetor_5 <- c(1, 2, 3, 4, 5, 6, 7, "Olá")')
+  Hint: |
+        Digite
+        
+        vetor_5 <- c(1, 2, 3, 4, 5, 6, 7, "Olá")
+        
+        no console.
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Ótimo. Agora verifique o objeto criado usando o seguinte comando
+          
+          vetor_5
+          
+  CorrectAnswer: 'vetor_5'
+  AnswerTests: omnitest(correctExpr='vetor_5')
+  Hint: |
+        Digite
+        
+        vetor_5
+        
+        no console.
+
+- Class: text
+  Output:...
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          No exercício anterior você criou o vetor_5 usando o comando
+          
+          vetor_5 <- c(1, 2, 3, 4, 5, 6, 7, "Olá")
+          
+          Quando você inspecionou o resultado, o R apresentou
+          
+          > vetor_5
+          
+          [1] "1"   "2"   "3"   "4"   "5"   "6"   "7"   "Olá"
+          
+          Qual é o modo dos elementos do vetor_5
+          
+  AnswerChoices: Todos elementos são character. As aspas indicam que os numerais (sete primeiros elementos) foram convertidos em character; 
+                 O sete primeiros elementos são numéricos e o último é character; 
+                 O último elemento "Olá" foi convertido para numérico porque numeric predomina sobre character
+                 
+  CorrectAnswer: 'Todos elementos são character. As aspas indicam que os numerais (sete primeiros elementos) foram convertidos em character'
+  AnswerTests: omnitest(correctVal='Todos elementos são character. As aspas indicam que os numerais (sete primeiros elementos) foram convertidos em character')
+  Hint: ''   
+
+
+- Class: text
+  Output: |
+          O exemplo acima demonstrou a predominância do modo character sobre numeric. 
+          
+          Não importa se apenas um elemento for character e os demais numeric ou logic, 
+          
+          todos serão convertidos para character, que é o modo predominante. 
+          
+          Lembre-se de que isso ocorre porque vetores são objetos homogêneos (porque são atômicos),
+          
+          ou seja, todos os seu elementos devem ser do mesmo modo.
+ 
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Digamos que você crie um novo vetor com o comando a seguir
+          
+          vetor_6 <- c(1, 2, 3, 4, 5, 6, 7, TRUE, FALSE)
+          
+          E quando inspecionar o resultado, o console apresente
+          
+          > vetor_6
+          
+          [1] 1   2   3   4   5   6   7   1   0
+          
+          Qual é o modo dos elementos do vetor_6
+          
+  AnswerChoices: numeric, porque TRUE and FALSE foram convertidos para 1 e 0, respectivamente; 
+                 character porque TRUE e FALSE são character; 
+                 logical devido ao TRUE e FALSE; 
+                 
+  CorrectAnswer: 'numeric, porque TRUE and FALSE foram convertidos para 1 e 0, respectivamente'
+  AnswerTests: omnitest(correctVal='numeric, porque TRUE and FALSE foram convertidos para 1 e 0, respectivamente')
+  Hint: ''   
+
+
+- Class: text
+  Output: |
+          O exemplo acima demonstrou a predominância do modo numeric sobre logical. 
+          
+          Observe que TRUE é convertido para 1 e FALSE é convertido para 0, ambos numéricos. 
+          
+          Isso acontecerá sempre que elementos numéricos e lógicos forem alocados
+          
+          no mesmo vetor, todos serão forçados (coerced) para o modo numérico.
+
+
+- Class: text
+  Output: |
+          Entre os principais atributos que um vetor pode assumir, estão
+          
+          - modo dos elementos, acessado com a função mode();
+          
+          - comprimento do vetor, ou número de elementos, acessado pela função length();
+          
+          - nomes dos elementos, acessados pela função name().
+          
+          A função str() é uma das melhores ferramentas para ter uma visão geral de
+          
+          um objeto no R, independentemente da classe a que esse objeto pertença.
+          
+          Em vetores, essa função informará o modo dos elementos, alguns dos nomes 
+          
+          dos elementos (se o vetor for nomeado) e alguns dos elementos.
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique a estrutura do vetor_1 criado em um exercício anterior usando o comando
+          
+          str(vetor_1)
+          
+  CorrectAnswer: 'str(vetor_1)'
+  AnswerTests: omnitest(correctExpr='str(vetor_1)')
+  Hint: |
+        Digite
+        
+        str(vetor_1)
+        
+        no console.
+
+- Class: text
+  Output:...
+
+- Class: text
+  Output: |
+          No exercício acima, você observou que a função str (abreviação de structure) 
+          
+          retornou o seguinte resultado
+          
+          chr [1:7] "a" "b" "c" "d" "e" "f" "g"
+          
+          chr significa que o modo é character
+          
+          [1:7] indica que o comprimento do vetor é 7
+          
+          "a" "b" "c" "d" "e" "f" "g" são os elementos do vetor
+          
+          Acostume-se a utilizar a função str. É boa prática inspecionar seus objetos
+          
+          no R para evitar "bugs" [1] em suas análises.
+
+          '[1] https://pt.wikipedia.org/wiki/Bug'
+
+- Class: text
+  Output: |
+          As funções abaixo permitem a conversão de modo dos elementos de um vetor
+          
+          as.character(nome_do_vetor)    # Converte para o modo character
+          
+          as.numeric(nome_do_vetor)      # Converte para o modo numeric
+          
+          as.logical(nome_do_vetor)      # Converte para o modo logical
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Converta os elementos do vetor_2 (de exercícios anteriores) para character usando 
+          
+          o comando abaixo. Observe o resultado.
+          
+          as.character(vetor_2)
+          
+  CorrectAnswer: 'as.character(vetor_2)'
+  AnswerTests: omnitest(correctExpr='as.character(vetor_2)')
+  Hint: |
+        Digite
+        
+        as.character(vetor_2)
+        
+        no console.
+
+- Class: text
+  Output:...
+    
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          O que você observou de diferente no vetor_2 após o comando as.character(vetor_2)?
+          
+  AnswerChoices: Os números aparecem entre aspas, indicando que eles são character; 
+                 Os números aparecem em maiúsculo;
+                 As letras de vetor_2 foram convertidas a numérico;
+                 Não houve efeito de as.character(vector_2).
+                 
+  CorrectAnswer: 'Os números aparecem entre aspas, indicando que eles são character!'
+  AnswerTests: omnitest(correctVal='Os números aparecem entre aspas, indicando que eles são character')
+  Hint: 'Observe o resultado novamente'   
+  
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          O que aconteceu com o vetor_2 após o comando as.character(vetor_2)?
+          
+  AnswerChoices: O vetor_2 permaneceu inalterado porque não houve atribuição (<-) do resultado; 
+                 O vetor_2 foi permanentemente alterado para o modo character
+                 
+  CorrectAnswer: 'O vetor_2 permaneceu inalterado porque não houve atribuição (<-) do resultado'
+  AnswerTests: omnitest(correctVal='O vetor_2 permaneceu inalterado porque não houve atribuição (<-) do resultado')
+  Hint: 'Houve alguma operação de atribuição?'
+
+- Class: text
+  Output: |
+          Se a resposta do exercício anterior lhe causou surpresa, lembre-se de que no R,
+          
+          em geral, um objeto só é permanentemente modificado se for feita uma operação de 
+          
+          atribuição. O comando as.character(vetor_2), por si só, opera apenas sobre 
+          
+          uma cópia do vetor_2.
+          
+          Para que o efeito de as.character sobre o vetor_2 seja permanente,
+          
+          é necessário o seguinte comando
+          
+          vetor_2 <- as.character(vetor_2)
+
+          Esse princípio se aplica a todas as demais funções. Devido à importância desse princípio, 
+          
+          recorreremos a ele diversas vezes em lições futuras.
+          
+
+- Class: mult_question
+  Output: |
+          Para finalizar essa lição...
+          
+          Como você acha que você está indo com o R?
+          
+  AnswerChoices: Ótimo. Estou pegando o jeito!; 
+                 Péssimo. O R é muito complicado.
+                 
+  CorrectAnswer: 'Ótimo. Estou pegando o jeito!'
+  AnswerTests: omnitest(correctVal='Ótimo. Estou pegando o jeito!')
+  Hint: 'Seja sincer@!'   

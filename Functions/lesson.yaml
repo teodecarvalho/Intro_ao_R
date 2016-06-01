@@ -1,0 +1,339 @@
+- Class: meta
+  Course: Intro ao R
+  Lesson: Functions
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+- Class: text
+  Output: |         
+          Nesta lição abordaremos as funções no R. Função (function), 
+          
+          é uma classe de objeto que opera (ou age) sobre outros objetos.
+          
+          Praticamente tudo o que você fizer no R envolverá alguma função.
+          
+          Em lições anteriores, utilizamos várias funções, como por exemplo:
+          
+          ls()
+          
+          rm(objeto_a_ser_removido)
+          
+          c(elementos)
+          
+          submit()
+          
+- Class: text
+  Output: |         
+          Como você já deve ter notado, a sintaxe para executar uma função é:
+          
+          nome_da_função(argumento_1, argumento_2, ..., argumento_n)
+          
+          Em que o nome da função é seguido de parênteses, dentro dos quais
+          
+          são fornecidos os argumentos para a função. As funções operam sobre
+          
+          seus argumentos e "retornam" um resultado. Esses argumentos servem
+          
+          também para alterar o comportamento da função. Vejamos um exemplo ...
+
+- Class: cmd_question
+  Output: |
+          A função rep() repete o argumento fornecido a ela.
+  
+          EXERCÍCIO
+          
+          Execute o comando
+          
+          rep(2)
+          
+  CorrectAnswer: 'rep(2)'
+  AnswerTests: omnitest(correctExpr='rep(2)')
+  Hint: |
+         rep(2)
+
+- Class: text
+  Output: ...
+  
+- Class: cmd_question
+  Output: |
+          Nada de muito útil, não é verdade?
+          
+          No exemplo anterior, você forneceu o número 2 como o 
+          
+          primeiro argumento da função rep(). A função simplesmente
+          
+          retornou o número 2 de volta.
+          
+          Para obter um resultado mais interessante, podemos fornecer
+          
+          outro argumento para a função rep, indicando quantas vezes
+          
+          queremos que ela repita o primeiro argumento.
+  
+          EXERCÍCIO
+          
+          Execute o comando:
+          
+          rep(2, 10)
+          
+  CorrectAnswer: 'rep(2, 10)'
+  AnswerTests: omnitest(correctExpr='rep(2, 10)')
+  Hint: |
+         rep(2, 10)
+
+- Class: text
+  Output: ...         
+
+- Class: cmd_question
+  Output: |
+          Outra função útil no R é a sample(). Essa função
+          
+          faz amostragens ou permutações em um vetor.
+          
+          Para obter ajuda sobre essa (ou qualquer outra) função, 
+          
+          digite o seu nome precedido de interrogação.
+          
+          EXERCÍCIO
+          
+          Execute o comando:
+          
+          ?sample
+          
+  CorrectAnswer: '?sample'
+  AnswerTests: omnitest(correctExpr='?sample')
+  Hint: |
+         ?sample
+
+- Class: text
+  Output: ...         
+
+- Class: text
+  Output: |
+          O comando acima abriu a ajuda do R para essa função.
+          
+          O formato da ajuda é padronizado, composto por um título,
+          
+          uma breve descrição e uma explicação detalhada dos argumentos
+          
+          que a função pode assumir.
+          
+          Ao final da ajuda, você (quase) sempre encontrará uma série 
+          
+          de exemplos de utilização da função que podem ser diretamente
+          
+          colados no console para lhe ajudar a entender a função.
+          
+- Class: text
+  Output: |
+          No caso da função sample, a ajuda informa que o primeiro argumento
+          
+          que ela toma é chamado de "x", que pode ser um vetor de um ou mais
+          
+          elementos ou um número inteiro.
+          
+          Podemos fornecer esse argumento de maneira implícita como abaixo:
+          
+          sample(1:10)
+          
+          Nesse caso o argumento "x" será o vetor de inteiros de um a dez.
+          
+          Ou podemos fornecer o argumento de maneira explícita
+          
+          sample(x = 1:10)
+          
+          Ambos darão o mesmo resultado.
+          
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando:
+          
+          sample(x = 1:10)
+          
+  CorrectAnswer: 'sample(x = 1:10)'
+  AnswerTests: omnitest(correctExpr='sample(x = 1:10)')
+  Hint: |
+         sample(x = 1:10)
+         
+
+- Class: text
+  Output: ...   
+  
+- Class: text
+  Output: |
+          Observe que a função sample pode ainda tomar outros 
+          
+          argumentos (size, replace, prob), que não fornecemos 
+          
+          no comando acima.
+          
+          Na descrição da função, a ajuda indica que os demais
+          
+          argumentos possuem valores padrões (default) que são
+          
+          tomados caso o usuário não os especifique.
+  
+- Class: text
+  Output: |
+          Mas esteja atento ao fato de que o argumento x
+          
+          é requerido, ou seja, não tem valor padrão. Caso a
+          
+          função seja chamada sem esse argumento, o R acusará
+          
+          um erro. Por exemplo, ao tentar executar esse comando:
+          
+          sample()
+          
+          O R retornará a seguinte mensagem:
+          
+          Error in sample() : argument "x" is missing, with no default
+
+- Class: cmd_question
+  Output: |
+          Conforme a ajuda da função sample, o segundo argumento dessa
+          
+          função chama-se "size" e permite informar à função sample o 
+          
+          tamanho da amostra a ser feita.
+          
+          EXERCÍCIO
+          
+          Complete (substitua as linhas ___) o comando abaixo para selecionar 
+          
+          aleatoriamente três elementos de uma sequência de 1 a 10:
+          
+          sample(x = 1:10, size = ___) 
+
+  CorrectAnswer: 'sample(x = 1:10, size = 3)'
+  AnswerTests: omnitest(correctExpr='sample(x = 1:10, size = 3)')
+  Hint: |
+         O argumento size deve assumir o valor 3.
+
+- Class: text
+  Output: |
+          Os valores dos argumentos podem ser fornecidos de maneira
+          
+          explícita, especificando o nome dos elementos
+          
+          sample(x = 1:10, size = 3)
+          
+          ou de maneira implícita
+          
+          sample(1:10, 3)
+          
+          nesse caso, o primeiro valor (1:10) será fornecido ao argumento x
+          
+          e o segundo valor (3) será fornecido ao argumento size.
+          
+          Quando os argumentos são fornecidos explicitamente,
+          
+          a ordem em que eles são fornecidos não importa.
+          
+- Class: text
+  Output: |
+          Dessa forma
+          
+          sample(x = 1:10, size = 3)
+          
+          é equivalente a
+          
+          sample(size = 3, x = 1:10)
+        
+- Class: text
+  Output: |
+          Mas isso não se aplica quando os argumentos são
+          
+          fornecidos de maneira implícita, ou seja
+          
+          sample(1:10, 3)
+          
+          é diferente de
+          
+          sample(3, 1:10)
+    
+         
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Se ao invés de 
+          
+          sample(x = 1:10, size = 3)
+          
+          tivessemos utilizado
+          
+          sample(1:10, 3)
+          
+          qual seria o resultado?
+          
+  AnswerChoices: O mesmo. Os dois comandos são equivalentes porque a ordem dos argumentos está correta no segundo comando;
+                 Uma mensagem de erro porque os nomes dos argumentos não são fornecidos de maneira explícita conforme requerido;
+                 Um resultado diferente porque a ordem dos argumentos fornecidos não coincide com a ordem apresentada na ajuda.
+                 
+  CorrectAnswer: 'O mesmo. Os dois comandos são equivalentes porque a ordem dos argumentos está correta no segundo comando'
+  AnswerTests: omnitest(correctVal='O mesmo. Os dois comandos são equivalentes porque a ordem dos argumentos está correta no segundo comando')
+  Hint: ''            
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora, um pouco diferente, se ao invés de 
+          
+          sample(x = 1:10, size = 3)
+          
+          tivessemos utilizado
+          
+          sample(3, 1:10)
+          
+          qual seria o resultado?
+          
+  AnswerChoices: Diferente do anterior porque agora 3 seria o valor do argumento x e 1:10 seria o valor do argumento size;
+                 Uma mensagem de erro porque os nomes dos argumentos não são fornecidos de maneira explícita conforme requerido;
+                 O mesmo resultado porque os comando são equivalentes.
+                 
+  CorrectAnswer: 'Diferente do anterior porque agora 3 seria o valor do argumento x e 1:10 seria o valor do argumento size'
+  AnswerTests: omnitest(correctVal='Diferente do anterior porque agora 3 seria o valor do argumento x e 1:10 seria o valor do argumento size')
+  Hint: ''            
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Finalmente, se ao invés de 
+          
+          sample(x = 1:10, size = 3)
+          
+          tivessemos utilizado
+          
+          sample(size = 3, x = 1:10)
+          
+          qual seria o resultado?
+          
+  AnswerChoices: O mesmo porque, embora a ordem dos argumentos esteja diferente, os argumentos estão explicitamente nomeados;
+                 Diferente do anterior porque agora 3 seria o valor do argumento x e 1:10 seria o valor do argumento size;
+                 
+  CorrectAnswer: 'O mesmo porque, embora a ordem dos argumentos esteja diferente, os argumentos estão explicitamente nomeados'
+  AnswerTests: omnitest(correctVal='O mesmo porque, embora a ordem dos argumentos esteja diferente, os argumentos estão explicitamente nomeados')
+  Hint: ''            
+
+- Class: text
+  Output: |
+          Obs.: A função sample e outras funções que envolvem 
+          
+          amostragem "aleatórias" raramente retornam o mesmo
+          
+          resultado duas vezes consecutivas, exceto se um "seed" for 
+          
+          explicitamente fornecido. 
+          
+          Isso será tratado adiante, mas eu toquei nesse ponto evitar 
+          
+          que você fique confuso quando notar a variação no resultado 
+          
+          da função sample.

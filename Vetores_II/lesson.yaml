@@ -1,0 +1,799 @@
+- Class: meta
+  Course: Intro ao R
+  Lesson: Vetores II - Operações com Vetores
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+
+
+- Class: text
+  Output: |         
+          Na lição anterior, aprendemos um pouco sobre vetores, a principal classe de objeto no R.
+          
+          Nós também vimos a seguinte definição de vetores no R:
+          
+          Objetos da classe "Vectors" são coleções **unidimensionais** de elementos **homogêneos**.
+          
+          Unidimensionais porque a posição de cada elemento em um vetor pode ser informado 
+          
+          de maneira inambígua com apenas um número.
+          
+          Homogêneos porque todos os elementos de um vetor devem ser do mesmo modo, com a seguinte
+          
+          predominância de modos
+          
+          character > numeric > logical
+
+- Class: text
+  Output: |         
+          Um vetor pode conter um ou mais elementos. Por exemplo,
+          
+          vetor_1 <- 1
+          
+          vetor_2 <- c(1, 2, 3)
+          
+          são ambos vetores. O primeiro com comprimento 1 (um único elemento) e o segundo
+          
+          com comprimento 3. Lembre-se de que o comprimento é um atributo que pode variar
+          
+          entre objetos da classe vetor, como ilustrado no exemplo acima.
+          
+          A função c() foi utilizada nesse exemplo para **concatenar** os elementos 1, 2, 3, 
+          
+          formando o vetor_2. Desse modo, a função c() é normalmente utilizada para concatenar
+          
+          elementos e criar vetores com mais de um elemento.
+          
+
+- Class: text
+  Output: |-         
+          Dica: Para criar vetores cujos elementos são uma sequência de números inteiros, é
+          
+          possível utilizar o operador dois pontos ":" (sem aspas).
+          
+          Por exemplo, o comando
+          
+          4:12
+          
+          cria um vetor numérico cujos elementos são 
+          
+          4 5 6 7 8 9 10 11 12
+          
+          Esse operador será muito útil em operação de indexação, que veremos mais à frente.
+
+- Class: text
+  Output: |         
+          Vimos também que o modo dos elementos também é um atributo que pode variar 
+          
+          entre vetores. Por exemplo,
+          
+          vetor_3 <- c("a", "b", "c")
+          
+          vetor_4 <- c(5, 6, 7)
+          
+          vetor_5 <- c(TRUE, FALSE, TRUE)
+          
+          são todos vetores. O primeiro no modo character, o segundo no modo numeric e o terceiro
+          
+          no modo logical.
+
+- Class: text
+  Output: |       
+          Nesta lição iremos aprender a operar sobre vetores
+          
+          Os seguintes vetores estão disponíveis como exemplo nessa lição
+          
+          idades <- c(23, 34, 25, 40, 19)
+          
+          nomes <- c("José", "Francisco", "João", "Manoel", "Pedro")
+          
+          pesos <- c(80, 78, 90, 92, 70)
+          
+          Seus elementos são correspondentes entre si. Assim, José (o primeiro elemento de nomes) 
+          
+          pesa 80 kg (primeiro elemento de pesos) e tem 23 anos (primeiro elemento de idades).
+          
+          (o exemplo é hipotético e qualquer verossimilhança será mera coincidência)
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Qual o modo dos elementos dos vetores idades, nomes e pesos, respectivamente?
+          
+  AnswerChoices: numeric, character, numeric;
+                 logical, numeric, character;
+                 numeric, logical, numeric;
+                 
+  CorrectAnswer: 'numeric, character, numeric'
+  AnswerTests: omnitest(correctVal='numeric, character, numeric')
+  Hint: ''            
+          
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique se os elementos do vetor idades estão nomeados usando a função names()
+          
+          com o comando abaixo.
+          
+          names(idades)
+          
+  CorrectAnswer: 'names(idades)'
+  AnswerTests: omnitest(correctExpr='names(idades)')
+  Hint: |
+        Digite
+        
+        names(idades)
+        
+        no console.
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |       
+          No exercício anterior, a função names indicou que os elementos de idades não
+          
+          estão nomeados. O valor NULL indica nulo ou inexistente.
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Antes de nomearmos os elementos de idades, observe no console a aparência do
+          
+          vetor idades. Execute o comando abaixo
+          
+          idades
+          
+  CorrectAnswer: 'idades'
+  AnswerTests: omnitest(correctExpr='idades')
+  Hint: |
+        Digite
+        
+        idades
+        
+        no console.
+
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          A função "names()" pode ser utilizada para acessar e para modificar o nome de 
+          
+          elementos de vetores.
+  
+          EXERCÍCIO
+          
+          Nomeie os elementos do vetor idades usando os elementos
+          
+          do vetor nomes, executando o seguinte comando
+          
+          names(idades) <- nomes
+          
+  CorrectAnswer: 'names(idades) <- nomes'
+  AnswerTests: omnitest(correctExpr='names(idades) <- nomes')
+  Hint: |
+        Digite
+        
+        names(idades) <- nomes
+        
+        no console.
+                   
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Observe novamente no console a aparência do vetor idades. 
+          
+          Execute o comando abaixo
+          
+          idades
+          
+  CorrectAnswer: 'idades'
+  AnswerTests: omnitest(correctExpr='idades')
+  Hint: |
+        Digite
+        
+        idades
+        
+        no console.
+
+- Class: text
+  Output: ...
+  
+- Class: text
+  Output: |
+          Note que a cada elemento do vetor "idades" foi associado um nome, proveniente
+          
+          dos elementos do vetor "nomes".
+          
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          O que você acha que aconteceu com o modo do vetor idades após a nomeação de seus
+          
+          elementos?
+          
+  AnswerChoices: Permaneceu numeric porque os elementos desse vetor ainda são numeric;
+                 Mudou para character porque o vetor agora armazena nomes;
+                 O modo ficou misto porque o vetor contém tanto numeric como character;
+                 
+  CorrectAnswer: 'Permaneceu numeric porque os elementos desse vetor ainda são numeric'
+  AnswerTests: omnitest(correctVal='Permaneceu numeric porque os elementos desse vetor ainda são numeric')
+  Hint: ''            
+
+- Class: text
+  Output: |
+          No vetor idades, mostrado abaixo novamente, os elementos continuam sendo apenas
+          
+          23, 34, 25, 40 e 19, todos numéricos. Os nomes dos elementos são apenas **atributos**.
+          
+          Desse modo, José, Francisco, João, Manoel e Pedro NÃO são elementos do vetor idades. 
+          
+          > idades
+          
+             José Francisco      João    Manoel     Pedro       --->     Atributo "names" no vetor idades
+          
+              23        34        25        40        19        --->     Elementos do vetor idades
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Analise a estrutura do vetor idades utilizando a função str()
+          
+          Lembre-se: basta digitar str(idades) no console.
+          
+  CorrectAnswer: 'str(idades)'
+  AnswerTests: omnitest(correctExpr='str(idades)')
+  Hint: |
+        Digite
+        
+        str(idades)
+        
+        no console.
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          A função str() retornou o seguinte resultado
+          
+           Named num [1:5] 23 34 25 40 19
+           
+          - attr(*, "names")= chr [1:5] "José" "Francisco" "João" "Manoel" ...
+          
+          Trocando em miúdos:
+          
+          Named num --> significa que os elementos do vetor estão nomeados e que são numéricos
+          
+          [1:5] --> significa que o vetor tem cinco elementos
+          
+          23 34 25 40 19 --> são os elementos desse vetor
+          
+          - attr(*, "names") --> indica que esse vetor "idades" possui um atributo "names"
+          
+          "José" "Francisco" "João" "Manoel" --> são alguns dos valores do atributo "names"
+          
+          Veja que a função str() dissecou esse vetor para nós e apresentou de maneira concisa
+          
+          várias informações importantes para operar sobre ele.
+          
+
+- Class: mult_question
+  Output: |
+          SELEÇÃO DE ELEMENTOS - INDEXAÇÃO
+          
+          Digamos que a idade do José, 23 anos, o primeiro elemento do vetor idades esteja 
+          
+          errado e queiramos corrigir para 25 anos.
+  
+          EXERCÍCIO
+          
+          Na sua opinião, a operação abaixo conseguiria alterar a idade do José para 25?
+          
+          idades <- 25
+          
+  AnswerChoices: Não. Ao invés de alterar apenas o primeiro elemento, o vetor idades inteiro seria sobrescrito e passaria a conter o número 25;
+                 Sim. A idade de José seria alterada para 25 anos com esse comando;
+                 Sim. Não sei porque. Mas como essa alternativa é a mais longa e você normalmente escreve mais nas alternativas verdadeiras, eu vou ficar com ela.
+                 
+  CorrectAnswer: 'Não. Ao invés de alterar apenas o primeiro elemento, o vetor idades inteiro seria sobrescrito e passaria a conter o número 25'
+  AnswerTests: omnitest(correctVal='Não. Ao invés de alterar apenas o primeiro elemento, o vetor idades inteiro seria sobrescrito e passaria a conter o número 25')
+  Hint: ''            
+
+- Class: text
+  Output: |
+          Como a questão anterior ilustra, para modificar um elemento específico de um vetor
+          
+          é necessário primeiro fazer a seleção do elemento. Essa operação de selecionar um 
+          
+          ou mais elementos é chamada de **operação de indexação** e é executada pelo 
+          
+          operador colchetes "[ ]".
+          
+          Sempre que você ver esse operador em um script do R, uma operação de indexação está sendo feita.
+
+- Class: text
+  Output: |
+          Esse operador é utilizado da seguinte forma:
+          
+          nome_do_vetor[índice]
+          
+          Em que o nome_do_vetor refere-se, obviamente, ao nome do objeto sobre o qual você quer 
+          
+          fazer a indexação, seguido do operador [ ] (sem espaço entre o operador e o nome).
+          
+          O índice refere-se ao "endereço" do elemento que se deseja selecionar.
+
+- Class: text
+  Output: |
+          Esse(s) "endereço(s)" do(s) elementos, ou índices, podem ser fornecidos de três
+          
+          formas, conforme a seguir:
+          
+            - Indexação por posição (numeric)
+            
+              Números inteiros referentes à posição (ou posições) dos elementos
+            
+            
+            - Indexação por nome (character)
+            
+              Os elementos são especificados por seus nomes
+            
+            
+            - Indexação por teste lógico (logical)
+            
+              Os elementos são selecionados por um teste lógico.
+              
+            Vejamos exemplos ...
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Antes de procedermos, observe novamente o vetor idades
+          
+          Lembre-se: basta digitar idades no console.
+          
+  CorrectAnswer: 'idades'
+  AnswerTests: omnitest(correctExpr='idades')
+  Hint: |
+        Digite
+        
+        idades
+        
+        no console.
+
+- Class: text
+  Output: ...
+
+- Class: mult_question
+  Output: |
+          Em um exercício anterior, propusemos a alteração da idade do José de 23 para 25
+          
+          anos. Logicamente, a primeira etapa para conseguir essa operação é selecionar
+          
+          a idade do José.
+  
+          EXERCÍCIO
+          
+          O comado para efetuar a seleção da idade do José deverá ser algo do tipo
+          
+          nome_do_objeto[índice]
+          
+          Qual dos comandos abaixo corretamente seleciona POR POSIÇÃO (numeric) o 
+          
+          elemento do vetor idades correspondente ao José?
+          
+          Dica: A idade do José é o primeiro elemento do vetor idades.
+          
+  AnswerChoices: idades[1];
+                 idades[nomes]José;
+                 idades[5];
+                 nomes[1];
+                 pesos[1];
+                 pesos[José];
+                 José[Pesos];
+                 José[idades]
+
+  CorrectAnswer: 'idades[1]'
+  AnswerTests: omnitest(correctVal='idades[1]')
+  Hint: 'nome_do_objeto[índice]'     
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando
+          
+          idades[1]
+          
+          e observe o resultado.
+
+  CorrectAnswer: 'idades[1]'
+  AnswerTests: omnitest(correctExpr='idades[1]')
+  Hint: |
+        Digite
+        
+        idades[1]
+        
+        no console.
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          No exercício anterior, conseguimos selecionar o elemento
+          
+          referente à idade do José no vetor idades, utilizando o comando
+          
+          idades[1]
+          
+          Para alterar a idade do José para 25 anos, basta executar o comando
+          
+          abaixo
+          
+          idades[1] <- 25
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Qual é a diferença entre o comando
+          
+          idades <- 25
+          
+          e
+          
+          idades[1] <- 25
+          
+  AnswerChoices: No primeiro, o vetor idades inteiro é sobrescrito por 25. No segundo, apenas o primeiro elemento é modificado;
+                 Não há diferença. Ambos produzem o mesmo resultado;
+                 O segundo retorna uma mensagem de erro pois 1 não é elemento de idades;
+
+  CorrectAnswer: 'No primeiro, o vetor idades inteiro é sobrescrito por 25. No segundo, apenas o primeiro elemento é modificado'
+  AnswerTests: omnitest(correctVal='No primeiro, o vetor idades inteiro é sobrescrito por 25. No segundo, apenas o primeiro elemento é modificado')
+  Hint: 'Geralmente a resposta mais longa é a verdadeira.'     
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando
+          
+          idades[1] <- 25
+
+  CorrectAnswer: 'idades[1] <- 25'
+  AnswerTests: omnitest(correctExpr='idades[1] <- 25')
+  Hint: |
+        Digite
+        
+        idades[1] <- 25
+        
+        no console.
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique novamente o vetor idades usando o comando
+          
+          idades
+
+  CorrectAnswer: 'idades'
+  AnswerTests: omnitest(correctExpr='idades')
+  Hint: |
+        Digite
+        
+        idades
+        
+        no console.
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+           No exemplo acima, selecionamos apenas um elemento do vetor idade
+           
+           por posição. É possível selecionar mais de um elemento ao mesmo
+           
+           tempo utilizando um vetor de índices. Por exemplo, o comando
+           
+           idades[2:3]
+           
+           seleciona o segundo e o terceiro elemento de idades.
+           
+           Outra maneira de selecionar o segundo e o terceiro elemento é
+           
+           idades[c(2, 3)]
+           
+           ou ainda
+           
+           posições <- c(2, 3)
+           
+           idades[posições]
+
+
+- Class: text
+  Output: |
+           Dica: para omitir um elemento de um vetor, é possível utilizar 
+           
+           índices negativos. Por exemplo, a operação abaixo omitiria o 
+           
+           segundo elemento de idades
+           
+           idades[-2]
+           
+- Class: text
+  Output: |
+           Até aqui, exploramos apenas a indexação por posição, utilizando 
+           
+           índices numéricos. Outra maneira de selecionar elementos de um
+           
+           vetor é utilizando indexação por nome do elemento. Obviamente, 
+           
+           isso funciona apenas se o vetor tiver seus elementos nomeados,
+           
+           como é o caso do vetor idades.
+           
+           
+- Class: text
+  Output: |
+           A indexação por nome do elemento é feita da seguinte forma:
+           
+           nome_do_objeto["nome_do_elemento"]
+           
+           O nome do elemento (mas NÃO o nome do objeto) a ser selecionado deverá 
+           
+           ser obrigatoriamente fornecido por um valor no modo "character", 
+           
+           ou seja, entre aspas.
+           
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Qual dos comandos abaixo corretamente seleciona a idade do José
+          
+          no vetor idades utilizando indexação POR NOME do elemento?
+          
+  AnswerChoices: idades["José"];
+                 idades[nomes]José;
+                 "idades"[José];
+                 "idades"["José"]
+  
+  CorrectAnswer: 'idades["José"]'
+  AnswerTests: omnitest(correctVal='idades["José"]')
+  Hint: 'idades["José"]'   
+           
+           
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Por que a alternativa
+          
+          "idades"["José"]
+          
+          é INCORRETA?
+          
+  AnswerChoices: Porque nomes de objetos (nesse caso o vetor idades) não devem ser envoltos por aspas;
+                 Porque nomes de elementos (nesse caso José) não devem ser envoltos por aspas;
+                 Porque nomes de elementos ou nome de objetos jamais podem ser envoltos por aspas
+           
+  CorrectAnswer: 'Porque nomes de objetos (nesse caso o vetor idades) não devem ser envoltos por aspas'
+  AnswerTests: omnitest(correctVal='Porque nomes de objetos (nesse caso o vetor idades) não devem ser envoltos por aspas')
+  Hint: 'Porque nomes de objetos (nesse caso o vetor idades) não devem ser envoltos por aspas'   
+                      
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Qual é a diferença entre os comandos
+          
+          "idades"
+          
+          e
+          
+          idades
+          
+          ?
+          
+  AnswerChoices: O primeiro é interpretado apenas como um elemento de texto (modo character) e o segundo é interpretado como o nome de um objeto;
+                 O primeiro é interpretado como uma chamada ao objeto "idades", enquanto o segundo é interpretado apenas como um elemento de texto (modo character)
+           
+  CorrectAnswer: 'O primeiro é interpretado apenas como um elemento de texto (modo character) e o segundo é interpretado como o nome de um objeto'
+  AnswerTests: omnitest(correctVal='O primeiro é interpretado apenas como um elemento de texto (modo character) e o segundo é interpretado como o nome de um objeto')
+  Hint: ''              
+           
+           
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Selecione a idade do Manoel no vetor idades.
+
+  CorrectAnswer: 'idades["Manoel"]'
+  AnswerTests: omnitest(correctExpr='idades["Manoel"]')
+  Hint: |
+         nome_do_objeto["nome_do_elemento"]
+
+- Class: text
+  Output: ...           
+           
+- Class: text
+  Output: |
+           Por fim, o terceiro tipo de seleção é a indexação por teste lógico.
+           
+           Um teste lógico é uma operação que retorna TRUE (verdadeiro) ou
+           
+           FALSE (falso).
+           
+           Por exemplo o comando
+           
+           5 > 2
+           
+           retorna TRUE, indicando que a condição "5 maior que 2" é verdadeira.
+           
+           
+- Class: cmd_question
+  Output: |
+          Outros operadores lógicos disponíveis são:
+          
+          <    (menor que)
+          
+          ==   (igual a)
+          
+          !=   (diferente de)
+          
+          <=   (menor ou igual)
+          
+          >=   (maior ou igual)
+          
+          EXERCÍCIO
+          
+          Execute a expressão que testa se 10 é menor que 15
+
+  CorrectAnswer: '10 < 15'
+  AnswerTests: omnitest(correctExpr='10 < 15')
+  Hint: |
+         10 < 15
+
+- Class: text
+  Output: ...             
+           
+- Class: mult_question
+  Output: |
+          Os testes lógicos podem ser executados não apenas sobre um número
+           
+          (mais precisamente, sobre vetores unitários), mas também sobre vetores
+           
+          com mais de um elemento.
+        
+          EXERCÍCIO
+          
+          Na sua opinião, qual é o resultado do comando abaixo?
+          
+          idades > 30
+          
+  AnswerChoices: A condição "maior que 30" será testada em cada elemento do vetor idade individualmente, retornando um vetor de TRUE e FALSE nas posições correspondentes a cada elemento;
+                 Os testes lógicos operam apenas sobre vetores unitários. Portanto, esse comando retornará uma mensagem de erro.
+                 Apenas o primeiro elemento será testado quanto à condição "maior que 30". Os demais elementos do vetor idade serão ignorados já que testes lógicos operam apenas sobre vetores unitários.
+           
+  CorrectAnswer: 'A condição "maior que 30" será testada em cada elemento do vetor idade individualmente, retornando um vetor de TRUE e FALSE nas posições correspondentes a cada elemento'
+  AnswerTests: omnitest(correctVal='A condição "maior que 30" será testada em cada elemento do vetor idade individualmente, retornando um vetor de TRUE e FALSE nas posições correspondentes a cada elemento')
+  Hint: ''                  
+           
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando abaixo para relembrar-se do vetor idades
+          
+          idades
+
+  CorrectAnswer: 'idades'
+  AnswerTests: omnitest(correctExpr='idades')
+  Hint: |
+         Digite idades no console e aperte "Enter". Lembre-se: para ver um objeto no console basta digitar seu nome e pressionar Enter.
+
+- Class: text
+  Output: ...                        
+           
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando abaixo aplicar o teste da condição maior que 30 aos elementos do vetor idades
+          
+          idades > 30
+
+  CorrectAnswer: 'idades > 30'
+  AnswerTests: omnitest(correctExpr='idades > 30')
+  Hint: |
+        idades > 30
+
+- Class: text
+  Output: |
+         Como era de se esperar o resultado indica que a condição "maior que 30" é verdadeira para 
+         
+         o segundo e quarto elementos e falsa para o primeiro, terceiro e quinto elementos.
+
+
+- Class: cmd_question
+  Output: |
+          Agora que você sabe efetuar testes lógicos no R, fica fácil fazer indexação POR LÓGICA
+          
+          Basta utilizar a seguinte sintaxe
+          
+          nome_do_objeto[teste_logico]
+  
+          EXERCÍCIO
+          
+          Execute o comando abaixo para selecionar os elementos do vetor idades
+          
+          maiores que 30.
+          
+          idades[idades > 30]
+
+  CorrectAnswer: 'idades[idades > 30]'
+  AnswerTests: omnitest(correctExpr='idades[idades > 30]')
+  Hint: |
+        idades[idades > 30]
+
+- Class: text
+  Output: |
+         Somente os elementos de idades maiores que 30 foram selecionados.
+
+- Class: text
+  Output: |
+         Pode parecer estranho o comando
+         
+         idades[idades > 30]
+         
+         porque idades aparece duas vezes nessa expressão.
+         
+         Mas é importante lembrar-se da estrutura:
+         
+         nome_do_objeto[teste_logico]
+         
+         O objeto sendo indexado é idades. Por isso a expressão começa com idades[...
+         
+         E o teste lógico, nesse caso, é 
+         
+         idades > 30
+         
+         Portanto, a expressão fica
+         
+         idades[idades > 30]
+         
+- Class: mult_question
+  Output: |
+          Chegamos ao final dessa lição.
+          
+          Teremos outras oportunidades de explorar indexações em lições futuras.
+          
+          Para finalizar, de forma livre e espontânea, qual sua impressão sobre o conteúdo dessa lição?
+          
+  AnswerChoices: Interessante. Parece-me que há alguns princípios lógicos na linguagem R. Assim, quanto mais eu exercitar e entender esses princípios, menos vou precisar memorizar comandos específicos;
+                 Isso tudo é muito complicado. Não vejo conexão entre os comandos e parece-me ser necessário memorizar uma infinitude de comandos desconexos. 
+
+  CorrectAnswer: 'Interessante. Parece-me que há alguns princípios lógicos na linguagem R. Assim, quanto mais eu exercitar e entender esses princípios, menos vou precisar memorizar comandos específicos'
+  AnswerTests: omnitest(correctVal='Interessante. Parece-me que há alguns princípios lógicos na linguagem R. Assim, quanto mais eu exercitar e entender esses princípios, menos vou precisar memorizar comandos específicos')
+  Hint: 'Sinta-se à vontade para ser sincer@!'                   
+         
+
+

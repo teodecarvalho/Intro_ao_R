@@ -1,0 +1,465 @@
+- Class: meta
+  Course: Intro ao R
+  Lesson: Vetores_III
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+- Class: text
+  Output: |         
+          Devido à importância do vetores para análise de dados em R e para o entendimento
+          
+          dos principais comandos nessa linguagem, o foco dessa lição será novamente 
+          
+          a operações com vetores.
+          
+          Antes disso, para aquecer um pouco, vamos fazer alguns exercícios de revisão ...
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Na definição de vetores, vimos que essa classe de objeto é unidimensional e homogênea.
+          
+          O que essas características significam, respectivamente?
+          
+  AnswerChoices: Unidimensional > os elementos são dispostos em sequência (1º, 2º, 3º, ...). Homogênea > todos os elementos de um vetor tem o mesmo modo;
+                 Unidimensional > todos os elementos de um vetor tem o mesmo modo. Homogênea > os elementos são dispostos em sequência (1º, 2º, 3º, ...);
+                 Unidimensional > os nomes dos elementos são um atributo. Homogênea > os elementos são dispostos em sequência (1º, 2º, 3º, ...) 
+                 
+  CorrectAnswer: 'Unidimensional > os elementos são dispostos em sequência (1º, 2º, 3º, ...). Homogênea > todos os elementos de um vetor tem o mesmo modo'
+  AnswerTests: omnitest(correctVal='Unidimensional > os elementos são dispostos em sequência (1º, 2º, 3º, ...). Homogênea > todos os elementos de um vetor tem o mesmo modo')
+  Hint: ''            
+
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Quem é o operador abaixo e qual a sua função?
+          
+          [ ]
+          
+  AnswerChoices: Operador de indexação. É utilizado para fazer seleção de elementos de um objeto;
+                 Operador de atribuição. É utilizado para modificar/criar variáveis
+                 
+  CorrectAnswer: 'Operador de indexação. É utilizado para fazer seleção de elementos de um objeto'
+  AnswerTests: omnitest(correctVal='Operador de indexação. É utilizado para fazer seleção de elementos de um objeto')
+  Hint: ''            
+          
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Supondo que haja um vetor chamado vetor_1 na workspace ("memória do R"), 
+          
+          qual operação estaria sendo feita na expressão abaixo?
+          
+          vetor_1[2]
+          
+  AnswerChoices: Operação de indexação para selecionar o segundo elemento do vetor_1 por POSIÇÃO;
+                 Operação de indexação para selecionar o primeiro elemento do vetor_2 por POSIÇÃO;
+                 Operação de indexação para selecionar o segundo elemento do vetor_1 por LÓGICO
+                 
+  CorrectAnswer: 'Operação de indexação para selecionar o segundo elemento do vetor_1 por POSIÇÃO'
+  AnswerTests: omnitest(correctVal='Operação de indexação para selecionar o segundo elemento do vetor_1 por POSIÇÃO')
+  Hint: ''       
+  
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          E na operação abaixo, o que está sendo feito?
+          
+          vetor_1[vetor_1 > 10]
+          
+  AnswerChoices: Operação de indexação para selecionar o elementos do vetor_1 por teste lógico;
+                 Operação de indexação para selecionar o décimo elemento do vetor_1 por POSIÇÃO;
+                 Operação de indexação para selecionar o décimo elemento do vetor_1 por NOME;
+                 
+                 
+  CorrectAnswer: 'Operação de indexação para selecionar o elementos do vetor_1 por teste lógico'
+  AnswerTests: omnitest(correctVal='Operação de indexação para selecionar o elementos do vetor_1 por teste lógico')
+  Hint: ''                      
+
+- Class: text
+  Output: |         
+          Antes de iniciar essa lição, os seguintes comandos foram executados:
+          
+          idades <- c(23, 34, 25, 40, 19)
+
+          nomes <- c("José", "Francisco", "João", "Manoel", "Pedro")
+          
+          pesos <- c(80, 78, 90, 92, 70)
+          
+          alturas <- c(170, 180, 150, 160, 170)
+          
+          names(pesos) <- nomes
+          
+          names(alturas) <- nomes
+          
+          names(idades) <- nomes
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Dê uma olhada no vetor pesos.
+          
+          Obs.: A essa altura do campeonato, espero que você já saiba que 
+          
+          para "olhar" um objeto no R, basta digitar o seu nome 
+          
+          e digitar "Enter".
+
+  CorrectAnswer: 'pesos'
+  AnswerTests: omnitest(correctExpr='pesos')
+  Hint: |
+         Você está de brincation with mim, não é?
+         
+         Para ver o vetor pesos, digite
+         
+         pesos
+         
+         no console e pressione "Enter" seguida.
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Dê uma olhada no vetor idades.
+
+  CorrectAnswer: 'idades'
+  AnswerTests: omnitest(correctExpr='idades')
+  Hint: |
+         Digite 
+         
+         idades 
+         
+         Pressione "Enter".
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Dê uma olhada no vetor alturas.
+
+  CorrectAnswer: 'alturas'
+  AnswerTests: omnitest(correctExpr='alturas')
+  Hint: |
+         Digite 
+         
+         alturas 
+         
+         Pressione "Enter".
+
+- Class: text
+  Output: ...  
+
+- Class: text
+  Output: |         
+          Espero que você tenha observado que a ordem dos elementos são
+          
+          correspondentes entre os vetores. Por exemplo, o primeiro elemento
+          
+          de idades, alturas e pesos é sobre o José.
+
+
+- Class: text
+  Output: |         
+          Transformação de variáveis
+          
+          É comum a necessidade de mudar as unidades em que uma variável é expressa. 
+          
+          Por exemplo, no vetor alturas, as alturas são expressas em centímetros. 
+          
+          Para expressar essas alturas em metros, seria necessário dividir cada
+          
+          elemento por 100.
+          
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          alturas / 100
+          
+          para expressar as alturas em metros
+
+  CorrectAnswer: 'alturas / 100'
+  AnswerTests: omnitest(correctExpr='alturas / 100')
+  Hint: |
+         Digite 
+         
+         alturas / 100
+         
+         Pressione "Enter".     
+
+- Class: text
+  Output: ...  
+  
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Dê uma olhada no vetor alturas novamente para ver o resultado.
+
+  CorrectAnswer: 'alturas'
+  AnswerTests: omnitest(correctExpr='alturas')
+  Hint: |
+         Digite 
+         
+         alturas 
+         
+         Pressione "Enter".          
+
+- Class: text
+  Output: ...  
+  
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          O que aconteceu com o vetor alturas depois do comando 
+          
+          alturas / 100
+          
+          que você executou no exercício anterior?
+          
+  AnswerChoices: Nada. O vetor não foi alterado porque não houve uma operação de atribuição;
+                 Os elementos do vetor alturas foram alterados definitivamente para metro;
+                 O vetor alturas foi substituído pelo número 100
+                 
+  CorrectAnswer: 'Nada. O vetor não foi alterado porque não houve uma operação de atribuição'
+  AnswerTests: omnitest(correctVal='Nada. O vetor não foi alterado porque não houve uma operação de atribuição')
+  Hint: ''                      
+          
+- Class: cmd_question
+  Output: |
+          Lembre-se de que no R, em geral, os objetos são criados ou modificados
+          
+          APENAS quando há uma operação de atribuição (x <- y). A expressão alturas*100 
+          
+          retorna os elementos de alturas multiplicados por 100 como resultado,
+          
+          mas NÃO altera os elementos originais do vetor alturas. 
+          
+          Para fazer essa modificação de maneira definitiva é necessário
+          
+          fazer uma operação de atribuição.
+  
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          alturas <- alturas / 100
+          
+          para modificar o vetor alturas
+
+  CorrectAnswer: 'alturas <- alturas / 100'
+  AnswerTests: omnitest(correctExpr='alturas <- alturas / 100')
+  Hint: |
+         Digite 
+         
+         alturas <- alturas / 100
+         
+         Pressione "Enter".                    
+          
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Dê uma olhada no vetor alturas novamente para ver o resultado.
+
+  CorrectAnswer: 'alturas'
+  AnswerTests: omnitest(correctExpr='alturas')
+  Hint: |
+         Digite 
+         
+         alturas 
+         
+         Pressione "Enter".          
+          
+- Class: text
+  Output: ...
+  
+- Class: text
+  Output: |
+          Operações com vetores são feitas elemento-a-elemento. Por exemplo, ao multiplicar
+          
+          um vetor por outro vetor de mesmo comprimento, a operação é feita multiplicando
+          
+          elementos nas posições correspondentes entre os dois vetores. Suponha os vetores
+          
+          vetor_1 <- c(1, 2, 3)
+          
+          vetor_2 <- c(4, 5, 6)
+          
+          O resultado de 
+          
+          vetor_1 * vetor_2 
+          
+          seria o vetor
+          
+          c(4, 10, 18)
+          
+          1 * 4 = 4    # Primeira posição
+          
+          2 * 5 = 10   # Segunda posição
+          
+          3 * 6 = 18   # Terceira posição
+          
+          O mesmo vale para outra operações aritméticas (+, -, /, etc.)
+  
+- Class: cmd_question
+  Output: |
+          Dessa maneira, a ordem dos elementos é importante para cálculos envolvendo
+          
+          dois ou mais vetores.
+  
+          EXERCÍCIO
+          
+          O índice de massa corporal (IMC), uma medida de adequabilidade de peso,
+          
+          é calculado dividindo-se o peso (em quilos) pelo quadrado da altura (em metros).
+          
+          Complete e execute o comando abaixo para calcular o IMC:
+          
+          IMC <- _________ / _________^2
+
+  CorrectAnswer: 'IMC <- pesos / alturas ^ 2'
+  AnswerTests: omnitest(correctExpr='IMC <- pesos / alturas ^ 2')
+  Hint: |
+         IMC <- _________ / _________^2          
+          
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique o vetor IMC que você criou na questão anterior.
+
+  CorrectAnswer: 'IMC'
+  AnswerTests: omnitest(correctExpr='IMC')
+  Hint: |
+         Digite 
+         
+         IMC
+         
+         Pressione "Enter".                   
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          IMC acima de 25 é indicativo de sobrepeso. Selecione 
+          
+          os elementos de IMC que se encaixam nessa categoria.
+
+          Dica: indexação por lógico, conforme abaixo
+          
+          vetor_a_ser_selecionado[vetor_a_ser_testado > valor]
+        
+  CorrectAnswer: 'IMC[IMC > 25]'
+  AnswerTests: omnitest(correctExpr='IMC[IMC > 25]')
+  Hint: |
+         vetor_a_ser_selecionado[vetor_a_ser_testado > valor]      
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          Houve um erro na digitação da altura do João, que deveria ser
+          
+          1.6 metros, ao invés de 1.5.
+          
+          EXERCÍCIO
+          
+          Altere a altura do João, no vetor alturas, para 1.6.
+        
+  CorrectAnswer: 'alturas["João"] <- 1.6'
+  AnswerTests: omnitest(correctExpr='alturas["João"] <- 1.6')
+  Hint: |
+         nome_do_vetor["nome_do_elemento"] <- valor_correto      
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique o vetor alturas.
+        
+  CorrectAnswer: 'alturas'
+  AnswerTests: omnitest(correctExpr='alturas')
+  Hint: |
+         Digite alturas no console.      
+
+- Class: text
+  Output: ...  
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          O vetor IMC foi calculado a partir do vetor pesos e alturas
+          
+          em um exercício anterior.
+          
+          O que você acha que aconteceu com o vetor IMC após alterarmos
+          
+          o vetor alturas no exercício anterior?
+          
+  AnswerChoices: Não foi alterado. Seria necessário criar o IMC novamente para a mudança em alturas fazer efeito no IMC;
+                 Foi automaticamente alterado porque o vetor alturas foi utilizado na criação do vetor IMC.
+                 
+  CorrectAnswer: 'Não foi alterado. Seria necessário criar o IMC novamente para a mudança em alturas fazer efeito no IMC'
+  AnswerTests: omnitest(correctVal='Não foi alterado. Seria necessário criar o IMC novamente para a mudança em alturas fazer efeito no IMC')
+  Hint: ''       
+
+- Class: text
+  Output: |
+          O exemplo anterior demonstra uma diferença importante entre o R
+          
+          e o Excel. No Excel, se uma coluna é calculada a partir de outras
+          
+          colunas, ela é automaticamente atualizada quando uma das colunas 
+          
+          da qual ela depende é alterada.
+          
+- Class: text
+  Output: |
+          Isso não acontece no R. No exemplo anterior, criamos o IMC da
+          
+          seguinte forma:
+          
+          IMC <- pesos * alturas
+          
+          Mesmo que o vetor pesos ou alturas sejam modificados após esse
+          
+          comando, o vetor IMC permanecerá com o seu valor original.
+          
+          Dessa forma, será necessário executar novamente a expressão
+          
+          IMC <- pesos * alturas
+          
+          para que o IMC seja recriado conforme os valores atualizados
+          
+          de pesos e alturas. Fique atento a isso, principalmente se você
+          
+          vem do Excel!
+
+
+
+
+

@@ -1,0 +1,332 @@
+- Class: meta
+  Course: Intro ao R
+  Lesson: Modos de Variáveis (Objetos)
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+
+
+- Class: text
+  Output: |
+          Agora que você já sabe criar e remover variáveis, vamos aprender sobre os modos de 
+          variáveis no R e como identificá-los.
+          
+          Basicamente, são três os modos mais importantes
+          
+          - numeric
+          
+          - character
+          
+          - logical
+
+- Class: text
+  Output: |
+          Saber identificar o modo de objetos no R é muito importante, já que boa parte dos 
+          
+          erros que você vai se deparar em análises no R se deve a operações incompatíveis 
+          
+          com o modo do objeto. Veremos exemplos ao longo do curso.
+
+
+- Class: text
+  Output: |
+          O modo 'numeric' refere-se, como o nome indica, a números. 
+          
+          Por exemplo, ao executar o comando abaixo
+          
+          a <- 2
+          
+          Uma variável é criada no modo numeric, ou seja, o valor numérico 2 é atribuído 
+          
+          à variável "a".
+          
+          O fato de essa nova variável ter o modo numérico (numeric) significa que é possível efetuar
+          
+          operações aritméticas sobre ela, por exemplo
+          
+          2 * a
+          
+          3 + a
+          
+          4 / a
+
+- Class: text
+  Output: |
+          No exercício a seguir, você precisará editar um script.
+          
+          Um script é um arquivo de texto contendo uma sequência de comandos separados por linhas.
+          
+
+- Class: script
+  Output: |
+          Exercício
+          
+          Complete o script que aparece ao lado conforme as instruções abaixo.
+          
+          Atribua o valor 5 à variável "x" (Lembre-se que nome de variáveis não tem aspas)
+          
+          Atribua o valor 10 à variável "y"
+          
+          Atribua à variável "z" o produto de "x" e "y"
+          
+  AnswerTests: test_multiply_variables()
+  Hint: ""
+  Script: multiply_variables.R
+
+
+- Class: mult_question
+  Output: |
+          No script acima, foram criadas três novas variáveis na workspace do R.
+  
+          EXERCÍCIO
+          
+          Os modos das variáveis x, y, z são respectivamente
+          
+  AnswerChoices: numeric, numeric, numeric; numeric, character, logical; numeric, numeric, multiplication; character, numeric, numeric
+  CorrectAnswer: 'numeric, numeric, numeric'
+  AnswerTests: omnitest(correctVal='numeric, numeric, numeric')
+  Hint: ''
+
+- Class: mult_question
+  Output: |
+          Ainda no script anterior, você criou a variável x atribuíndo a ela o número 5.
+          
+          Em seguida, você criou a variável y atribuindo a ela o número 10.
+          
+          Finalmente, você criou a variável z atribuindo a ela o valor do produto x * y
+  
+          EXERCÍCIO
+          
+          Se agora nós modificarmos a variável x, atribuindo a ela o valor 3, o que acontecerá com
+          
+          y e z, respectivamente?
+          
+  AnswerChoices: y passará a conter o número 3 e z não será alterada; y não será alterada, mas z conterá o novo valor do produto x*y, our seja, 30; y e z não serão alteradas
+  CorrectAnswer: 'y e z não serão alteradas'
+  AnswerTests: omnitest(correctVal='y e z não serão alteradas')
+  Hint: 'A criação/modificação de uma variável no R não tem impacto sobre outras variáveis preexistentes'
+
+
+- Class: text
+  Output: |
+          O exercício anterior teve o propósito de ilustrar um importante princípio na linguagem R
+          
+          A criação/modificação de uma variável no R não tem impacto sobre outras variáveis preexistentes
+
+          No exemplo anterior, se quiséssemos que a variável z fosse atualizada com o novo valor de x
+          
+          seria necessário reexecutar o comando que utilizamos para sua criação
+          
+          z <- x * y
+          
+          Lembre-se disso!
+
+
+- Class: text
+  Output: |
+          Agora que estamos craques com o modo numeric vamos conhecer um outro modo 
+          
+          muito importante, character.
+          
+          Character é o modo utilizado no R para armazenar texto. Para permitir a diferenciação
+          
+          entre expressões (incluindo nome de variáveis) e texto no R, valores no modo character
+          
+          devem ser sempre envoltos por aspas ("")
+
+- Class: text
+  Output: |
+          Desse modo, ao digitar no console
+          
+          "Olá"
+          
+          O R irá educadamente lhe responder "Olá" de volta já que as aspas permitem que o 
+          
+          R identifique esse comando como sendo apenas texto. Sendo um pouco mais técnico,
+          
+          a expressão "Olá" (entre aspas) retorna um valor* no modo character que é apresentado
+          
+          no console.
+          
+          *OBS.: Esse valor é armazenado em um vetor temporário. Veremos detalhes em lições
+          
+          futuras.
+
+- Class: text
+  Output: |
+          Mas ao digitar no console
+          
+          Olá
+          
+          O R executará uma mensagem de erro, pois, sem as aspas, essa expressão indica uma
+          
+          chamada à variável Olá, que não existe porque não foi criada pelo usuário.
+          
+          Dica.
+          
+          Mais da metade das mensagens de erro que você obterá nos primeiros meses aprendendo o 
+          
+          R se deverá à confusão entre um comando para gerar um texto (character) e um comando 
+          
+          fazendo referência a uma variável.
+
+- Class: text
+  Output: |
+          Resumindo
+          
+          No R, qualquer palavra sem aspas será interpretada como uma chamada a um objeto.
+          
+          Texto entre aspas será sempre interpretado como apenas texto (modo character).
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Crie uma nova variável chamada de texto_ola e atribua a ela o texto "Olá"
+          
+  CorrectAnswer: 'texto_ola <- "Olá"'
+  AnswerTests: omnitest(correctVal="Olá"); expr_creates_var("texto_ola")
+  Hint: |
+        Cuidado com as aspas e com maíusculas e minúsculas!!!
+          
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Crie uma nova variável chamada de texto_r e atribua a ela o texto "R"
+          
+  CorrectAnswer: 'texto_r <- "R"'
+  AnswerTests: omnitest(correctVal="R"); expr_creates_var("texto_r")
+  Hint: |
+        Cuidado com as aspas e com maíusculas e minúsculas!!! 
+
+- Class: cmd_question
+  Output: |
+          Para concatenar (juntar) o conteúdo de dois objetos do modo character,
+          
+          utiliza-se a função paste.
+          
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          paste(texto_ola, texto_r)
+          
+          para concatenar os dois textos.
+          
+  CorrectAnswer: 'paste(texto_ola, texto_r)'
+  AnswerTests: omnitest(correctExpr='paste(texto_ola, texto_r)')
+  Hint: |
+        paste(texto_ola, texto_r)
+          
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          Para finalizar essa lição, vamos discutir brevemente o modo "logical", que será
+          
+          bastante utilizado em lições futuras.
+          
+          O modo lógico é normalmente resultantes de operações booleanas (Verdadeiro ou Falso)
+          
+          e, portanto, assume apenas dois possíveis valores
+          
+          TRUE
+          
+          FALSE
+          
+          Note que nem TRUE nem FALSE são envoltos por aspas. Caso contrário, eles seriam character.
+
+- Class: text
+  Output: |
+          TRUE pode ser abreviado por T
+          
+          FALSE pode ser abreviado por F
+          
+          
+- Class: cmd_question
+  Output: |
+          Eis alguns operadores lógicos que retornam TRUE or FALSE
+          
+          x maior que y?
+          
+          x > y
+          
+          x menor que y?
+          
+          x < y
+          
+          x igual a y? (Observe que são duas igualdades)
+          
+          x == y
+          
+          x diferente de y?
+          
+          x != y
+          
+          EXERCÍCIO
+          
+          Utilize um operador lógico entre os apresentados acima para testar 
+          
+          se o valor da variável x é maior que o da variável z. Ambas foram criadas
+          
+          anteriormente.
+          
+  CorrectAnswer: 'x > z'
+  AnswerTests: omnitest(correctExpr='x > z')
+  Hint: x > z         
+          
+          
+- Class: text
+  Output: |
+          Vamos fazer uma revisão rápida?
+          
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          Quais são os três modos de variáveis no R?
+          
+  AnswerChoices: numeric, character, logical; 
+                 workspace, logical, variable; 
+                 logical, environment, numeric; 
+                 string, number, boolean
+                 
+  CorrectAnswer: 'numeric, character, logical'
+  AnswerTests: omnitest(correctVal='numeric, character, logical')
+  Hint: ''
+        
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Digamos que as seguintes variáveis sejam criadas no R
+          
+          a <- 10
+          
+          b <- 5
+          
+          c <- a + b
+          
+          d <- a > b
+          
+          e <- "a"
+          
+          f <- "5"
+          
+          Quais são os modos de a, b, c, d, e, f, respectivamente?
+          
+  AnswerChoices: numeric, numeric, numeric, logical, character, character; 
+                 numeric, numeric, numeric, logical, character, numeric; 
+                 numeric, numeric, numeric, numeric, character, character; 
+                 numeric, numeric, logical, logical, character, character;
+                 
+  CorrectAnswer: 'numeric, numeric, numeric, logical, character, character'
+  AnswerTests: omnitest(correctVal='numeric, numeric, numeric, logical, character, character')
+  Hint: ''
+        
+
