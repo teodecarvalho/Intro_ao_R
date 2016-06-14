@@ -12,7 +12,7 @@
           
           que funcionam como estrutura de dados:
           
-          - Vetores: unidimensional homogêneo (atômica)
+          - Vetores: unidimensional homogêneo (atômico)
           
           - Matrizes: bidimensional homogênea (atômica)
           
@@ -37,7 +37,7 @@
           
           características de matrizes (bidimensionais) e listas 
           
-          (heterogêneas) ao mesmo tempo. Essas são exatamentes 
+          (heterogêneas) ao mesmo tempo. Essas são exatamente 
           
           as características da classe que estudaremos nessa 
           
@@ -94,6 +94,13 @@
           Use o comando abaixo para ver as primeiras linhas de iris:
           
           head(iris)
+  
+  CorrectAnswer: 'head(iris)'
+  AnswerTests: omnitest(correctExpr='head(iris)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        head(iris)
 
 - Class: text
   Output: ...
