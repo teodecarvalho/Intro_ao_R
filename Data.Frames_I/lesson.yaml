@@ -176,7 +176,7 @@
           
           de uma data.frame.
           
- - Class: cmd_question
+- Class: cmd_question
   Output: |
           Há implicações práticas importantes dessa dualidade das data.frames.
           
