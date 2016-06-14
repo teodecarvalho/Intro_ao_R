@@ -214,7 +214,7 @@
         no console.
 
 - Class: text
-  Output:...
+  Output: ...
 
 - Class: mult_question
   Output: |
@@ -326,7 +326,7 @@
         no console.
 
 - Class: text
-  Output:...
+  Output: ...
 
 - Class: text
   Output: |
@@ -378,7 +378,7 @@
         no console.
 
 - Class: text
-  Output:...
+  Output: ...
     
 - Class: mult_question
   Output: |

@@ -219,7 +219,6 @@
           
           names
   
-  
           EXERCÍCIO
           
           Execute o comando abaixo para nomear as componentes 
@@ -292,7 +291,7 @@
           
           Utilizando o mesmo princípio, selecione a matriz
           
-          armazenada na terceira componente de minha_outra_matriz.
+          armazenada na terceira componente de minha_outra_lista.
           
           Dica: a componente desejada chama-se "matriz"
           
@@ -409,7 +408,7 @@
           
           Ou seja, tratamos a expressão minha_outra_lista$letras
           
-          como se ela fosse o nome de um vetor.
+          como se ela fosse o próprio vetor.
 
 - Class: cmd_question
   Output: |
@@ -422,7 +421,7 @@
           "letras" de minha_outra_lista.
           
   CorrectAnswer: 'minha_outra_lista$letras[3]'
-  AnswerTests: omnitest(correctVal = c("b", "c"))
+  AnswerTests: omnitest(correctVal = "c")
   Hint: |
         ________________$_____[_]          
 
@@ -442,7 +441,7 @@
           
           Dica: Lembre-se de que o objeto resultante da expressão
           
-          minha_outra_lista$matriz é uma matriz!
+          minha_outra_lista$letras é um vetor!
           
   CorrectAnswer: 'minha_outra_lista$letras[2:3]'
   AnswerTests: omnitest(correctVal = c("b", "c"))
@@ -464,6 +463,10 @@
           
           minha_outra_lista.
           
+          Dica: Lembre-se de que o objeto resultante da expressão
+          
+          minha_outra_lista$matriz é uma matriz!
+          
   CorrectAnswer: 'minha_outra_lista$matriz[2, 2]'
   AnswerTests: omnitest(correctVal = 5)
   Hint: |
@@ -482,7 +485,7 @@
           
           Colchetes simples []: seleção de componente + conteúdo
           
-          Colchetes duples [[]]: seleção apenas do conteúdo
+          Colchetes duplos [[]]: seleção apenas do conteúdo
           
           Vejamos exemplos...
 
@@ -515,7 +518,7 @@
   Output: |
           Observe que no exemplo acima, aparece "$numeros" sobre
           
-          o vetor contido nessa componente. Isso indica que a 
+          o vetor contido nessa componente. Isso indica que  
           
           tanto a componente quanto o seu conteúdo foram selecionados.
           
@@ -561,11 +564,11 @@
           
           Obs.: A função sum permite somar os elementos de um vetor.
           
-  AnswerChoices: sum(minha_outra_lista[["numeros"]];
-                 sum(minha_outra_lista["numeros"];
+  AnswerChoices: sum(minha_outra_lista[["numeros"]]);
+                 sum(minha_outra_lista["numeros"]);
                  
-  CorrectAnswer: 'Uma matriz no modo numeric'
-  AnswerTests: omnitest(correctVal='Uma matriz no modo numeric')
+  CorrectAnswer: 'sum(minha_outra_lista[["numeros"]])'
+  AnswerTests: omnitest(correctVal='sum(minha_outra_lista[["numeros"]])')
   Hint: ''  
 
 - Class: text
@@ -580,7 +583,7 @@
           
           minha_outra_lista e seu conteúdo. Uma componente de uma
           
-          lista é por si só uma lista. A função sum é incapaz de 
+          lista é também uma lista. A função sum é incapaz de 
           
           operar sobre uma lista e por isso ela retorna uma 
           
@@ -588,7 +591,7 @@
 
 - Class: text
   Output: |
-          Já o comando sum(minha_outra_lista[["numeros"]]) retorna
+          Já o comando minha_outra_lista[["numeros"]] retorna
           
           apenas o conteúdo da componente "numeros", sem a componente.
           
@@ -695,7 +698,7 @@
           
           principais no R. Execute o comando abaixo para ver a lista 
           
-          resultante dessa função:
+          resultante dessa função (você precisará sair da lição):
           
           str(princomp(iris[, 1:4], cor = TRUE))
 

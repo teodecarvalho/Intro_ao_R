@@ -215,7 +215,7 @@
           paste(texto_ola, texto_r)
           
           para concatenar os dois textos.
-          
+
   CorrectAnswer: 'paste(texto_ola, texto_r)'
   AnswerTests: omnitest(correctExpr='paste(texto_ola, texto_r)')
   Hint: |
@@ -328,5 +328,3 @@
   CorrectAnswer: 'numeric, numeric, numeric, logical, character, character'
   AnswerTests: omnitest(correctVal='numeric, numeric, numeric, logical, character, character')
   Hint: ''
-        
-
