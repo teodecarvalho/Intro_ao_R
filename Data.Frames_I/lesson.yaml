@@ -1,0 +1,338 @@
+- Class: meta
+  Course: Intro_ao_R
+  Lesson: Data.Frames_I
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+- Class: text
+  Output: |
+          Nas lições anteriores exploramos três classes de objetos
+          
+          que funcionam como estrutura de dados:
+          
+          - Vetores: unidimensional homogêneo (atômica)
+          
+          - Matrizes: bidimensional homogênea (atômica)
+          
+          - Lists: unidimensional heterogênea (recursiva)
+          
+          As planilhas de dados que normalmente usamos em nossos 
+          
+          estudos contém tanto dados númericos (altura de plantas,
+          
+          abundância de besouros, etc.) como dados categóricos 
+          
+          (identificação de tratamentos, local, etc.).
+
+
+- Class: text
+  Output: |
+          Ou seja, os dados em que usualmente trabalhamos são
+          
+          bidimensionais e heterogêneos.
+          
+          Dessa forma, seria útil ter uma classde de objeto com 
+          
+          características de matrizes (bidimensionais) e listas 
+          
+          (heterogêneas) ao mesmo tempo. Essas são exatamentes 
+          
+          as características da classe que estudaremos nessa 
+          
+          lição: data.frames.
+
+- Class: text
+  Output: |
+          Uma data.frame pode ser imaginada como um "hibrído"
+          
+          resultante do cruzamento entre listas e matrizes.
+          
+          Desse modo, os métodos que aprendemos para operar
+          
+          sobre matrizes e listas são geralmente válidos 
+          
+          para data.frames.
+
+- Class: cmd_question
+  Output: |
+          Para exemplificar as operações sobre essa classe, usaremos
+          
+          uma data.frame disponível na memória do R, a iris.
+          
+          Essa data.frame consiste de cinco colunas; as quatro primeiras
+          
+          com dados numéricos a respeito de características (tamanho e 
+          
+          largura de sépalas e pétalas) de flores pertencentes a três
+          
+          espécies (setosa, virginica e versicolor) (última coluna).
+          
+          EXERCÍCIO
+          
+          Verifique o objeto iris, digitando o seu nome no console.
+          
+  CorrectAnswer: 'iris'
+  AnswerTests: omnitest(correctExpr='iris')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris
+
+- Class: text
+  Output: ...
+  
+- Class: cmd_question
+  Output: |
+          Como essa data.frame é muito grande para o console,
+          
+          podemos inspecionar apenas as primeiras linhas.
+          
+          EXERCÍCIO
+          
+          Use o comando abaixo para ver as primeiras linhas de iris:
+          
+          head(iris)
+
+- Class: text
+  Output: ...
+          
+  CorrectAnswer: 'head(iris)'
+  AnswerTests: omnitest(correctExpr='head(iris)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        head(iris)      
+
+- Class: text
+  Output: ...
+  
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Finalmente, utilize a nossa velha amiga, a função
+          
+          str() para inspecionar a data.frame iris.
+          
+  CorrectAnswer: 'str(iris)'
+  AnswerTests: omnitest(correctExpr='str(iris)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        str(iris)      
+
+- Class: text
+  Output: ...
+
+- Class: text
+  Output: |
+          Há muitas informações importantes aqui. Então vamos
+          
+          dissecar o resultado de str por partes:
+          
+          A primeira linha indica que iris é uma data.frame 
+          
+          com 150 observações (linhas) e 5 variáveis (colunas).
+
+- Class: text
+  Output: |
+          Em seguida aparece um $ seguido do nome de cada coluna.
+          
+          $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+          
+          Isso lembra algo?
+          
+          Provavelmente você se recorda de que o $ era o operador 
+          
+          utilizado para fazer seleção de componentes de listas 
+          
+          (apenas o conteúdo) quando nomeadas. Essa é a primeira
+          
+          similaridade entre data.frames e listas.
+          
+- Class: text
+  Output: |
+          Você pode pensar em uma data.frame como um tipo especial de
+          
+          lista em que todos as componentes são vetores. Observe a
+          
+          descrição da primeira componentes de iris:
+          
+          $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+          
+          A informação "num  5.1 4.9 4.7 4.6 ... " indica que há um vetor 
+          
+          numérico armazenado na componente "Sepal.Length".
+
+- Class: text
+  Output: |
+          Você pode também tratar a data.frame iris como uma matriz
+          
+          com cinco colunas. Mas há uma importante diferença: uma matriz
+          
+          não seria capaz de armazenar colunas de modos diferentes, ao contrário
+          
+          de uma data.frame.
+          
+ - Class: cmd_question
+  Output: |
+          Há implicações práticas importantes dessa dualidade das data.frames.
+          
+          Vamos começar com a indexação de colunas.
+  
+          EXERCÍCIO
+          
+          Uma maneira de selecionar colunas de uma data.frame é utilizando o
+          
+          operador $, como fazíamos para componentes de listas. Execute o 
+          
+          comando abaixo e observe o resultado:
+          
+          iris$Sepal.Length
+          
+  CorrectAnswer: 'iris$Sepal.Length'
+  AnswerTests: omnitest(correctExpr='iris$Sepal.Length')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris$Sepal.Length
+
+- Class: text
+  Output: ...         
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Uma maneira de se chegar ao mesmo resultado é utilizando o operador
+          
+          [linha,coluna] com uma vírgula dentro para separar índices de 
+          
+          linhas e colunas, como fazíamos para matrizes. 
+          
+          Execute o comando abaixo e observe o resultado:
+          
+          iris[, "Sepal.Length"]
+          
+  CorrectAnswer: 'iris[, "Sepal.Length"]'
+  AnswerTests: omnitest(correctExpr='iris[, "Sepal.Length"]')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris[, "Sepal.Length"]
+
+- Class: text
+  Output: ...         
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Qual seria o resultado do comando abaixo?
+          
+          iris[, 1]
+          
+  AnswerChoices: A seleção da primeira coluna de iris;
+                 A seleção da primeira linha de iris;
+                 Um erro porque data.frames só aceitam $ como operador de indexação;
+                 
+  CorrectAnswer: 'A seleção da primeira coluna de iris'
+  AnswerTests: omnitest(correctVal='A seleção da primeira coluna de iris')
+  Hint: ''  
+
+ - Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          E quanto ao resultado do comando abaixo?
+          
+          iris[2, "Petal.Length"]
+          
+  AnswerChoices: A seleção do elemento localizado na segunda linha e na coluna "Petal.Length";
+                 Uma mensagem de erro porque não é possível misturar indexação por posição e nome ao mesmo tempo;
+                 
+  CorrectAnswer: 'A seleção do elemento localizado na segunda linha e na coluna "Petal.Length"'
+  AnswerTests: omnitest(correctVal='A seleção do elemento localizado na segunda linha e na coluna "Petal.Length"')
+  Hint: ''  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando abaixo e observe o resultado:
+          
+          str(iris$Sepal.Length)
+          
+  CorrectAnswer: 'str(iris$Sepal.Length)'
+  AnswerTests: omnitest(correctExpr='str(iris$Sepal.Length)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        str(iris$Sepal.Length)
+
+- Class: text
+  Output: ...         
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          O que é o objeto resultante da expressão iris$Petal.Length
+          
+  AnswerChoices: Um vetor numérico;
+                 Uma componente de uma list;
+                 Uma data.frame;
+                 
+  CorrectAnswer: 'Um vetor numérico'
+  AnswerTests: omnitest(correctVal='Um vetor numérico')
+  Hint: ''  
+
+- Class: mult_question
+  Output: |
+          EXERCÍCIO
+          
+          Considerando o princípio de que toda expressão que resulta
+          
+          em um objeto pode ser tratada como o próprio objeto, como 
+          
+          você avalia a expressão abaixo:
+          
+          iris$Petal.Length[2]
+          
+  AnswerChoices: Correta porque como a expressão iris$Petal.Length resulta um vetor, é possível operar sobre ela como um vetor qualquer;
+                 Incorreta porque o operador [] deve conter uma vírgula dentro para fazer seleção em linhas e colunas de data.frames;
+                 Correta porque parece uma expressão bonita;
+                 
+  CorrectAnswer: 'Correta porque como a expressão iris$Petal.Length resulta um vetor, é possível operar sobre ela como um vetor qualquer'
+  AnswerTests: omnitest(correctVal='Correta porque como a expressão iris$Petal.Length resulta um vetor, é possível operar sobre ela como um vetor qualquer')
+  Hint: ''  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Execute o comando abaixo e observe o resultado:
+          
+          iris$Sepal.Length[2]
+          
+  CorrectAnswer: 'iris$Sepal.Length[2]'
+  AnswerTests: omnitest(correctExpr='iris$Sepal.Length[2]')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris$Sepal.Length[2]
+
+- Class: text
+  Output: ...         
+
+- Class: text
+  Output: |
+          Como você provavelmente já esperava, a expressão acima
+          
+          seleciona o segundo elemento do vetor contido na coluna
+          
+          "Sepal.Length" de iris. Esse comando é equivalente ao 
+          
+          comando iris[2, "Sepal.Length"].
