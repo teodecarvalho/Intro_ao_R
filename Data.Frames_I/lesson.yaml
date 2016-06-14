@@ -242,7 +242,7 @@
   AnswerTests: omnitest(correctVal='A seleção da primeira coluna de iris')
   Hint: ''  
 
- - Class: mult_question
+- Class: mult_question
   Output: |
           EXERCÍCIO
           
