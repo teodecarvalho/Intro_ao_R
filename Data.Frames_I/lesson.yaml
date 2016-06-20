@@ -101,17 +101,7 @@
         Digite o comando abaixo e pressione Enter.
         
         head(iris)
-
-- Class: text
-  Output: ...
-          
-  CorrectAnswer: 'head(iris)'
-  AnswerTests: omnitest(correctExpr='head(iris)')
-  Hint: |
-        Digite o comando abaixo e pressione Enter.
         
-        head(iris)      
-
 - Class: text
   Output: ...
   
@@ -151,7 +141,7 @@
           
           Isso lembra algo?
           
-          Provavelmente você se recorda de que o $ era o operador 
+          Provavelmente você se recorda de que o $ é o operador 
           
           utilizado para fazer seleção de componentes de listas 
           
@@ -165,7 +155,7 @@
           
           lista em que todos as componentes são vetores. Observe a
           
-          descrição da primeira componentes de iris:
+          descrição da primeira componente de iris:
           
           $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
           
@@ -287,6 +277,8 @@
           EXERCÍCIO
           
           O que é o objeto resultante da expressão iris$Petal.Length
+          
+          no exercício anterior?
           
   AnswerChoices: Um vetor numérico;
                  Uma componente de uma list;

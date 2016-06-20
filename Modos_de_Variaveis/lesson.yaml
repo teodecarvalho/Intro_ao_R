@@ -71,6 +71,10 @@
           
           Atribua à variável "z" o produto de "x" e "y"
           
+          Após salvar o script utilize o comando 
+          
+          submit()
+
   AnswerTests: test_multiply_variables()
   Hint: ""
   Script: multiply_variables.R
