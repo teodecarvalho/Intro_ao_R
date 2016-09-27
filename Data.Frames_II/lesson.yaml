@@ -221,7 +221,7 @@
           print(iris_virg, n = 100)
   
   CorrectAnswer: 'print(iris_virg, n = 100)'
-  AnswerTests: omnitest(correctExpr='print(iris, n = 100)')
+  AnswerTests: omnitest(correctExpr='print(iris_virg, n = 100)')
   Hint: |
         Digite o comando abaixo e pressione Enter.
         
@@ -244,7 +244,7 @@
           filter(iris, _________ == ___________)
   
   CorrectAnswer: 'filter(iris, Species == "versicolor")'
-  AnswerTests: omnitest(correctExpr='print(iris, n = 100)')
+  AnswerTests: omnitest(correctExpr='filter(iris, Species == "versicolor")')
   Hint: |
         Digite o comando abaixo e pressione Enter.
         
@@ -529,6 +529,11 @@
                  
                  Petal.Width.m = Petal.Width / 100)
           
+          Obs.: Infelizmente não consegui me livrar das barras
+          
+          horizontais "|" no output do swirl. Você terá que excluí-las
+          
+          manualmente.
           
   CorrectAnswer: 'iris <- mutate(iris, Sepal.Length.m = Sepal.Length / 100,
           
