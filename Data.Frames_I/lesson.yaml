@@ -33,7 +33,7 @@
           
           bidimensionais e heterogêneos.
           
-          Dessa forma, seria útil ter uma classde de objeto com 
+          Dessa forma, seria útil ter uma classe de objeto com 
           
           características de matrizes (bidimensionais) e listas 
           
@@ -153,7 +153,7 @@
   Output: |
           Você pode pensar em uma data.frame como um tipo especial de
           
-          lista em que todos as componentes são vetores. Observe a
+          lista em que todas as componentes são vetores. Observe a
           
           descrição da primeira componente de iris:
           

@@ -10,8 +10,3 @@
 # variables when appropriate. The answer test, creates_new_var()
 # can be used for for the purpose, but it also re-evaluates the
 # expression which the user entered, so care must be taken.
-
-filter_setosa_test <- function(){
-  setosa <- get('setosa', globalenv())
-  return(identical(setosa, filter(iris, Species == "setosa")))
-}

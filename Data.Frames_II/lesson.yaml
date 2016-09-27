@@ -1,0 +1,609 @@
+- Class: meta
+  Course: Intro_ao_R
+  Lesson: Data.Frames_II
+  Author: Teotonio Soares de Carvalho
+  Type: Standard
+  Organization: Universidade Federal de Lavras
+  Version: 2.2.21
+
+
+- Class: text
+  Output: |
+          Embora possamos operar sobre data.frames usando a 
+          
+          estrutura básica da linguagem R, uma maneira mais 
+          
+          conveniente de operar sobre essa classe é utilizando
+          
+          as ferramentas disponíveis no pacote DPlyr, desen-
+          
+          volvida pelo time do Hadley Wickham. Lembre-se de fazer
+          
+          uma prece a ele sempre que usar essas ferramentas!
+
+
+- Class: text
+  Output: |
+          O DPlyr é baseado em um conjunto de funções ou verbos
+          
+          desenvolvidos para tarefas específicas sobre data.frames:
+          
+          - filter: filtra linhas com base em testes lógicos
+          
+          - select: seleciona colunas
+          
+          - mutate: altera/adiciona colunas
+          
+          - summarise: cria sumários dos dados
+          
+          - group_by: agrupa a data.frame de acordo com os níveis de um fator
+          
+
+- Class: text
+  Output: |
+          - arrange: ordenas as linhas de acordo com uma ou mais colunas
+          
+          - distinct: apresenta os valores distintos em uma ou mais colunas
+          
+          - bind_rows: combina data.frames por linhas
+          
+          - bind_cols: combina data.frames por colunas 
+          
+          - left_join: combina data.frames por colunas de acordo com uma ou mais variáveis
+          
+          - etc
+
+- Class: cmd_question
+  Output: |
+          Para utilizar as funções disponíveis no DPlyr, é necessário primeiro
+          
+          carregar o pacote.
+          
+          EXERCÍCIO
+          
+          Carregue o pacote DPlyr usando o comando:
+          
+          library(dplyr)
+          
+  CorrectAnswer: 'library(dplyr)'
+  AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        library(dplyr)
+  
+- Class: cmd_question
+  Output: |
+          A classe data.frame é muito útil, mas às vezes sua apresentação é
+          
+          incoveniente. Por exemplo, dê uma olhada na data.frame iris, que vem
+          
+          carregada na memória do R.
+          
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          iris
+          
+  
+  CorrectAnswer: 'iris'
+  AnswerTests: omnitest(correctExpr='iris')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris
+        
+- Class: text
+  Output: ...
+  
+- Class: cmd_question
+  Output: |
+          Você deve ter notado que, como essa data.frame é relativamente longa,
+          
+          é necessário rolar o cursor para ver o nome de suas colunas. Além disso,
+          
+          nenhuma informação sobre os modos das colunas é diretamente disponível.
+          
+          Em razão disso, no pacote DPlyr foi desenvolvida uma variante das data.frames
+          
+          chamada tbl_df
+
+  
+          EXERCÍCIO
+          
+          Execute o comando abaixo para converter a data.frame iris em uma tbl_df
+          
+          iris <- tbl_df(iris)
+          
+  CorrectAnswer: 'iris <- tbl_df(iris)'
+  AnswerTests: omnitest(correctExpr='iris <- tbl_df(iris)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris <- tbl_df(iris)      
+
+- Class: cmd_question
+  Output: |
+          Dê outra olhada em iris e atente para o efeito de tbl_df.
+          
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          iris
+          
+  
+  CorrectAnswer: 'iris'
+  AnswerTests: omnitest(correctExpr='iris')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris
+        
+- Class: text
+  Output: ...
+
+
+- Class: text
+  Output: |
+          Você provavelmente observou que o resultado é bem mais
+          
+          conveniente, já que diversas linhas são omitidas. Se o 
+          
+          seu console for pequeno, algumas colunas também serão 
+          
+          omitidas. Além disso, veja que o modo das colunas é 
+          
+          informado logo abaixo do nome de cada uma.
+
+- Class: cmd_question
+  Output: |
+          Caso você queira ver mais linhas, você pode utilizar a
+          
+          função print e fornecer o número de linhas com o argumento
+          
+          "n".
+          
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          print(iris, n = 100)
+          
+          e observe o resultado.
+  
+  CorrectAnswer: 'print(iris, n = 100)'
+  AnswerTests: omnitest(correctExpr='print(iris, n = 100)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        print(iris, n = 100)
+        
+- Class: text
+  Output: ...
+
+- Class: cmd_question
+  Output: |
+          Vamos então explorar os verbos (funções) do DPlyr.
+          
+          A função filter é utilizada para filtrar linhas de
+          
+          uma data.frame (seu primeiro argumento) com base em
+          
+          testes lógicos (geralmente sobre suas colunas, às quais
+          
+          é possível fazer referência sem uso de aspas). 
+          
+          Por exemplo, para selecionar as linhas em que a coluna 
+          
+          "Species" tem valor "virginica", utilize o comando abaixo:
+          
+          EXERCÍCIO
+          
+          Execute o comando 
+          
+          iris_virg <- filter(iris, Species == "virginica")
+  
+  CorrectAnswer: 'iris_virg <- filter(iris, Species == "virginica")'
+  AnswerTests: omnitest(correctExpr='iris_virg <- filter(iris, Species == "virginica")')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris_virg <- filter(iris, Species == "virginica")
+        
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora observe o resultado utilizando
+          
+          print(iris_virg, n = 100)
+  
+  CorrectAnswer: 'print(iris_virg, n = 100)'
+  AnswerTests: omnitest(correctExpr='print(iris, n = 100)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        print(iris_virg, n = 100)
+        
+- Class: text
+  Output: ...
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Na expressão abaixo, substitua as linhas corretamente
+          
+          para selecionar apenas as linhas referentes à espécie 
+          
+          "versicolor"
+          
+          filter(iris, _________ == ___________)
+  
+  CorrectAnswer: 'filter(iris, Species == "versicolor")'
+  AnswerTests: omnitest(correctExpr='print(iris, n = 100)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        filter(iris, Species == "versicolor")
+        
+- Class: text
+  Output: ...
+
+
+- Class: cmd_question
+  Output: |
+          Você deve ter achado curioso o fato de, na função filter, 
+          
+          podermos nos referir a uma coluna da data.frame iris sem
+          
+          precisar usar aspas. Essa é uma característica dos verbos
+          
+          do DPlyr. Observe também que a data.frame sobre a qual a
+          
+          função filter deverá operar, nesse caso iris, é o primeiro
+          
+          argumento da função. Isso é um padrão para todos os verbos.
+          
+          EXERCÍCIO
+          
+          Complete o comando abaixo para selecionar as linhas
+          
+          de iris em que o Petal.Length é maior ou igual a 4.
+          
+          filter(____, ___________  >=  4)
+  
+  CorrectAnswer: 'filter(iris, Petal.Length >= 4)'
+  AnswerTests: omnitest(correctExpr='filter(iris, Petal.Length >= 4)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        filter(iris, Petal.Length >= 4)
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          Outro verbo conveniente é o select, utilizado para selecionar
+          
+          colunas de uma data.frame.
+          
+          EXERCÍCIO
+          
+          Execute o comando abaixo para selecionar apenas as colunas
+          
+          Petal.Length e Species da data.frame iris
+          
+          select(iris, Petal.Length, Species)
+  
+  CorrectAnswer: 'select(iris, Petal.Length, Species)'
+  AnswerTests: omnitest(correctExpr='select(iris, Petal.Length, Species)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        select(iris, Petal.Length, Species)
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          Essa função possui algumas opções interessantes que não se
+          
+          aplicam à estrutura básica da linguagem R.
+          
+          Por exemplo, é possível usar o operador ":" no nome das 
+          
+          colunas para indicar a seleção de colunas ao longo de
+          
+          um intervalo.
+          
+          EXERCÍCIO
+          
+          Execute o comando abaixo para selecionar as colunas entre
+          
+          Sepal.Length e Petal.Width
+          
+          select(iris, Sepal.Length:Petal.Width)
+  
+  CorrectAnswer: 'select(iris, Sepal.Length:Petal.Width)'
+  AnswerTests: omnitest(correctExpr='select(iris, Sepal.Length:Petal.Width)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        select(iris, Sepal.Length:Petal.Width)
+
+- Class: text
+  Output: ...  
+
+
+- Class: cmd_question
+  Output: |
+          Outra peculiaridade da função select é a possibilidade de
+          
+          utilizar o sinal de menos "-" para omitir uma ou mais colunas.
+          
+          EXERCÍCIO
+          
+          Execute o comando abaixo para omitir as colunas Species e 
+          
+          Petal.Length da data.frame iris:
+          
+          select(iris, -Petal.Length, -Species)
+          
+  CorrectAnswer: 'select(iris, -Petal.Length, -Species)'
+  AnswerTests: omnitest(correctExpr='select(iris, -Petal.Length, -Species)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        select(iris, -Petal.Length, -Species)
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          Essa função permite ainda a utilização de padrões para 
+          
+          definir as colunas a serem selecionadas.
+          
+          EXERCÍCIO
+          
+          Execute o comando abaixo para selecionar as colunas que 
+          
+          começam com "Petal":
+          
+          select(iris, starts_with("Petal"))
+          
+  CorrectAnswer: 'select(iris, starts_with("Petal"))'
+  AnswerTests: omnitest(correctExpr='select(iris, starts_with("Petal"))')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        select(iris, starts_with("Petal"))
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Complete o comando abaixo para selecionar as linhas que terminam com "Width":
+          
+          select(iris, ends_with(_________))
+          
+  CorrectAnswer: 'select(iris, ends_with("Width"))'
+  AnswerTests: omnitest(correctExpr='select(iris, ends_with("Width"))')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        select(iris, ends_with("Width"))
+
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          O verbo mutate permite alterar e adicionar colunas à uma data.frame.
+          
+          Obviamente, é necessário fazer uma atribuição para que essa alteração
+          
+          seja permanente.
+          
+          EXERCÍCIO
+          
+          Execute o comando abaixo para adicionar uma coluna à data.frame
+          
+          iris com Petal.Length convertido para mm:
+          
+          iris <- mutate(iris, Petal.Length.mm = Petal.Length * 10)
+          
+  CorrectAnswer: 'iris <- mutate(iris, Petal.Length.mm = Petal.Length * 10)'
+  AnswerTests: omnitest(correctExpr='iris <- mutate(iris, Petal.Length.mm = Petal.Length * 10)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris <- mutate(iris, Petal.Length.mm = Petal.Length * 10)
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora observe como iris ficou após o comando acima digitando
+          
+          iris
+          
+  CorrectAnswer: 'iris'
+  AnswerTests: omnitest(correctExpr='iris')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris
+        
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+
+          EXERCÍCIO
+          
+          Complete o comando abaixo para criar uma nova coluna em iris
+          
+          chamada Sepal.Width.mm contendo os valores de Sepal.Width 
+          
+          convertidos em milimetros:
+          
+          iris <- mutate(iris, _____________ = ____________ * 10)
+          
+  CorrectAnswer: 'iris <- mutate(iris, Sepal.Width.mm = Sepal.Width * 10)'
+  AnswerTests: omnitest(correctExpr='iris <- mutate(iris, Sepal.Width.mm = Sepal.Width * 10)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris <- mutate(iris, Sepal.Width.mm = Sepal.Width * 10)
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Agora observe como iris ficou após o comando acima digitando
+          
+          iris
+          
+  CorrectAnswer: 'iris'
+  AnswerTests: omnitest(correctExpr='iris')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris
+        
+- Class: text
+  Output: ...  
+
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Para reforçar o uso da função select, complete o 
+          
+          comando abaixo para selecionar as colunas que terminam
+          
+          com ".mm", ou seja, aquelas que criamos.
+          
+          select(_________, ends_with(_________))
+          
+          
+  CorrectAnswer: 'select(iris, ends_with(".mm"))'
+  AnswerTests: omnitest(correctExpr='select(iris, ends_with(".mm"))')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        select(iris, ends_with(".mm"))
+        
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          É possível criar/alterar várias colunas com uma
+          
+          única chamada da função mutate. Execute o comando abaixo:
+          
+          iris <- mutate(iris,
+          
+                 Sepal.Length.m = Sepal.Length / 100,
+          
+                 Sepal.Width.m = Sepal.Width / 100,
+                 
+                 Petal.Length.m = Petal.Length / 100,
+                 
+                 Petal.Width.m = Petal.Width / 100)
+          
+          
+  CorrectAnswer: 'iris <- mutate(iris, Sepal.Length.m = Sepal.Length / 100,
+          
+                 Sepal.Width.m = Sepal.Width / 100,
+                 
+                 Petal.Length.m = Petal.Length / 100,
+                 
+                 Petal.Width.m = Petal.Width / 100)'
+  AnswerTests: omnitest(correctExpr='iris <- mutate(iris, Sepal.Length.m = Sepal.Length / 100,
+          
+                 Sepal.Width.m = Sepal.Width / 100,
+                 
+                 Petal.Length.m = Petal.Length / 100,
+                 
+                 Petal.Width.m = Petal.Width / 100)')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        iris <- mutate(iris, Sepal.Length.m = Sepal.Length / 100,
+          
+                 Sepal.Width.m = Sepal.Width / 100,
+                 
+                 Petal.Length.m = Petal.Length / 100,
+                 
+                 Petal.Width.m = Petal.Width / 100)
+        
+- Class: text
+  Output: ...  
+
+- Class: cmd_question
+  Output: |
+          EXERCÍCIO
+          
+          Verifique o resultado da expressão acima selecionando as
+          
+          colunas que terminam em ".m"
+          
+  CorrectAnswer: 'select(iris, ends_with(".m"))'
+  AnswerTests: omnitest(correctExpr='select(iris, ends_with(".m"))')
+  Hint: |
+        Digite o comando abaixo e pressione Enter.
+        
+        select(iris, ends_with(".m"))
+        
+- Class: text
+  Output: ...  
+
+- Class: text
+  Output: |
+        As quebras de linha no comando abaixo são ignoradas pelo
+        
+        R e servem apenas para facilitar a leitura.
+  
+        mutate(iris, Sepal.Length.m = Sepal.Length / 100,
+          
+                 Sepal.Width.m = Sepal.Width / 100,
+                 
+                 Petal.Length.m = Petal.Length / 100,
+                 
+                 Petal.Width.m = Petal.Width / 100)
+        
+        Observe que as expressões que geram/alteram colunas 
+        
+        são separadas por vírgulas dentro da função mutate.
+  
+- Class: text
+  Output: |
+        Alternativamente, poderíamos usar a função mutate_each
+        
+        para obter o resultado acima:
+        
+        mutate_each(iris, funs = funs(. * 100), Sepal.Length:Petal.Width)
+        
+        Mas não exploraremos essa função nesse tutorial.
+
+
+
+
